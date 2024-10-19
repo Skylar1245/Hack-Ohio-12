@@ -36,7 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: Global.getHeightByPercentage(context, 30),
                   child: Column(
                     children: [
-                      Text('Sun', style: TextStyle(fontSize: 30, color: Global.textColor())),
+                      Text('Sun',
+                          style: TextStyle(
+                              fontSize: 30, color: Global.textColor())),
                       //temperature goes here FIXME
                       Container(
                           decoration: BoxDecoration(
@@ -66,66 +68,107 @@ class _HomeScreenState extends State<HomeScreen> {
                           padding: const EdgeInsets.all(8),
                           children: <Widget>[
                             FloatingActionButton.extended(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    20.0), // Adjust the radius for more/less rounding
+                                side: BorderSide(
+                                  color: Colors.white, // Border color
+                                  width: 2.0, // Border width
+                                ),
+                              ),
+                              backgroundColor: Colors
+                                  .transparent, // Make FAB background transparent
+                              elevation: 0, // Remove shadow
                               heroTag: "0",
                               onPressed: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          const MigraineData(
-                                              title: 'My Health')),
+                                    builder: (context) =>
+                                        const MigraineData(title: 'My Health'),
+                                  ),
                                 );
                               },
                               label: Text('My Health'),
                               icon: Icon(Icons.thumb_down),
-                              backgroundColor: Colors.pink,
-                            ), visibleDivider,
+                            ),
+                            visibleDivider,
                             FloatingActionButton.extended(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    20.0), // Adjust the radius for more/less rounding
+                                side: BorderSide(
+                                  color: Colors.white, // Border color
+                                  width: 2.0, // Border width
+                                ),
+                              ),
+                              backgroundColor: Colors
+                                  .transparent, // Make FAB background transparent
+                              elevation: 0, // Remove shadow
                               heroTag: "1",
                               onPressed: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          const MigraineData(
-                                              title: 'Migraines')),
+                                    builder: (context) =>
+                                        const MigraineData(title: 'Migraines'),
+                                  ),
                                 );
                               },
                               label: Text('Migraines'),
                               icon: Icon(Icons.thumb_down),
-                              backgroundColor: Colors.pink,
                             ),
                             buttonDivider,
                             FloatingActionButton.extended(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    20.0), // Adjust the radius for more/less rounding
+                                side: BorderSide(
+                                  color: Colors.white, // Border color
+                                  width: 2.0, // Border width
+                                ),
+                              ),
+                              backgroundColor: Colors
+                                  .transparent, // Make FAB background transparent
+                              elevation: 0, // Remove shadow
                               heroTag: "2",
                               onPressed: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          const MigraineData(
-                                              title: 'Asthma')),
+                                    builder: (context) =>
+                                        const MigraineData(title: 'Asthma'),
+                                  ),
                                 );
                               },
                               label: Text('Asthma'),
                               icon: Icon(Icons.thumb_down),
-                              backgroundColor: Colors.pink,
                             ),
                             buttonDivider,
                             FloatingActionButton.extended(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    20.0), // Adjust the radius for more/less rounding
+                                side: BorderSide(
+                                  color: Colors.white, // Border color
+                                  width: 2.0, // Border width
+                                ),
+                              ),
+                              backgroundColor: Colors
+                                  .transparent, // Make FAB background transparent
+                              elevation: 0, // Remove shadow
                               heroTag: "3",
                               onPressed: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          const MigraineData(
-                                              title: 'Arthritis')),
+                                    builder: (context) =>
+                                        const MigraineData(title: 'Arthritis'),
+                                  ),
                                 );
                               },
                               label: Text('Arthritis'),
                               icon: Icon(Icons.thumb_down),
-                              backgroundColor: Colors.pink,
                             )
                           ])))
             ]));
