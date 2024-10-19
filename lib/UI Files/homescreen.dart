@@ -7,12 +7,14 @@ class HomeScreen extends StatefulWidget {
   final String title;
 
   @override
-  State<HomeScreen> createState() => _SkeletonState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _SkeletonState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    Divider divider = Divider(height: 40, color: Colors.transparent);
+    Divider buttonDivider = Divider(height: 20, color: Colors.transparent);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -22,26 +24,46 @@ class _SkeletonState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-                constraints: BoxConstraints.expand(
-                  height:
-                      Theme.of(context).textTheme.headlineMedium!.fontSize! *
-                              1.1 +
-                          200.0,
-                ),
-                padding: const EdgeInsets.all(8.0),
-                color: Colors.blue[600],
-                alignment: Alignment.bottomCenter,
-                child: Text('Im weather box',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineMedium!
-                        .copyWith(color: Colors.white)),
-              ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                        20), // Adjust the radius as needed
+                    color: const Color.fromARGB(255, 17, 93, 136),
+                  ),
+                  constraints: BoxConstraints.expand(
+                    height:
+                        Theme.of(context).textTheme.headlineMedium!.fontSize! *
+                                1.1 +
+                            200.0,
+                  ),
+                  //padding: const EdgeInsets.all(8.0),
+                  alignment: Alignment.bottomCenter,
+                  width: 375,
+                  child: Column(
+                    children: [
+                      Text('Sun', style: TextStyle(fontSize: 30),),
+                      Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                20), // Adjust the radius as needed
+                            color: const Color.fromARGB(255, 211, 98, 98),
+                          ),
+                          //padding: const EdgeInsets.all(8.0),
+                          alignment: Alignment.center,
+                          width: 375,
+                          child: Text('Weekly forecast'))
+                    ],
+                  )),
+              divider,
               Expanded(
                   child: Container(
-                      padding: const EdgeInsets.all(8.0),
-                      color: Colors.red[600],
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                            20), // Adjust the radius as needed
+                        color: const Color.fromARGB(255, 201, 9, 9),
+                      ),
+                      //padding: const EdgeInsets.all(8.0),
                       alignment: Alignment.bottomCenter,
+                      width: 375,
                       child: ListView(
                           padding: const EdgeInsets.all(8),
                           children: <Widget>[
@@ -60,6 +82,7 @@ class _SkeletonState extends State<HomeScreen> {
                               icon: Icon(Icons.thumb_down),
                               backgroundColor: Colors.pink,
                             ),
+                            buttonDivider,
                             FloatingActionButton.extended(
                               heroTag: "2",
                               onPressed: () {
@@ -75,6 +98,7 @@ class _SkeletonState extends State<HomeScreen> {
                               icon: Icon(Icons.thumb_down),
                               backgroundColor: Colors.pink,
                             ),
+                            buttonDivider,
                             FloatingActionButton.extended(
                               heroTag: "3",
                               onPressed: () {
