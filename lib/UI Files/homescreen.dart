@@ -35,11 +35,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: Global.getWidthByPercentage(context, 90),
                   height: Global.getHeightByPercentage(context, 30),
                   child: Column(
-                    children: [//picture here
-                      Text('80°', //FIXME
-                          style: TextStyle(
-                              fontSize: 50, color: Global.textColor())),
-                      //temperature goes here FIXME
+                    children: [
+                      divider,
+                      Row(
+                        children: [
+                          SizedBox(width: Global.getWidthByPercentage(context, 10)),
+                          Image.asset('assets/sunnyweather.png'), SizedBox(width: Global.getWidthByPercentage(context, 30),),
+                          Text('80°', //FIXME temperature goes here 
+                              style: TextStyle(
+                                  fontSize: 50, color: Global.textColor())),
+                        ],
+                      ),
+                      divider,
                       Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
@@ -96,7 +103,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 'My Health',
                                 style: TextStyle(color: Global.textColor()),
                               ),
-                              icon: Icon(Icons.medical_information, color: Colors.white),
+                              icon: Icon(Icons.medical_information,
+                                  color: Colors.white),
                             ),
                             buttonDivider,
                             visibleDivider,
@@ -191,7 +199,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 'Arthritis',
                                 style: TextStyle(color: Global.textColor()),
                               ),
-                              icon: Icon(Icons.waving_hand_sharp, color: Colors.white),
+                              icon: Icon(Icons.waving_hand_sharp,
+                                  color: Colors.white),
                             )
                           ])))
             ]));
