@@ -67,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: ListView(
                           padding: const EdgeInsets.all(8),
                           children: <Widget>[
+                            buttonDivider,
                             FloatingActionButton.extended(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
@@ -84,15 +85,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        const MigraineData(title: 'My Health', percent: 10,),
+                                    builder: (context) => const MigraineData(
+                                      title: 'My Health',
+                                      percent: 10,
+                                    ),
                                   ),
                                 );
                               },
-                              label: Text('My Health'),
-                              icon: Icon(Icons.thumb_down),
+                              label: Text(
+                                'My Health',
+                                style: TextStyle(color: Global.textColor()),
+                              ),
+                              icon: Icon(Icons.medical_information, color: Colors.white),
                             ),
+                            buttonDivider,
                             visibleDivider,
+                            buttonDivider,
                             FloatingActionButton.extended(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
@@ -110,13 +118,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        const MigraineData(title: 'Migraines', percent: 10,),
+                                    builder: (context) => const MigraineData(
+                                      title: 'Migraines',
+                                      percent: 10,
+                                    ),
                                   ),
                                 );
                               },
-                              label: Text('Migraines'),
-                              icon: Icon(Icons.thumb_down),
+                              label: Text(
+                                'Migraines',
+                                style: TextStyle(color: Global.textColor()),
+                              ),
+                              icon: Icon(Icons.face, color: Colors.white),
                             ),
                             buttonDivider,
                             FloatingActionButton.extended(
@@ -136,13 +149,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        const MigraineData(title: 'Asthma', percent: 10,),
+                                    builder: (context) => const MigraineData(
+                                      title: 'Asthma',
+                                      percent: 10,
+                                    ),
                                   ),
                                 );
                               },
-                              label: Text('Asthma'),
-                              icon: Icon(Icons.thumb_down),
+                              label: Text(
+                                'Asthma',
+                                style: TextStyle(color: Global.textColor()),
+                              ),
+                              icon: Icon(Icons.air, color: Colors.white),
                             ),
                             buttonDivider,
                             FloatingActionButton.extended(
@@ -162,13 +180,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        const MigraineData(title: 'Arthritis', percent: 10,),
+                                    builder: (context) => const MigraineData(
+                                      title: 'Arthritis',
+                                      percent: 10,
+                                    ),
                                   ),
                                 );
                               },
-                              label: Text('Arthritis'),
-                              icon: Icon(Icons.thumb_down),
+                              label: Text(
+                                'Arthritis',
+                                style: TextStyle(color: Global.textColor()),
+                              ),
+                              icon: Icon(Icons.waving_hand_sharp, color: Colors.white),
                             )
                           ])))
             ]));
