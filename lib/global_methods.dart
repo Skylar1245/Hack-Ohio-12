@@ -61,6 +61,7 @@ class Global {
   static Color TableHeader() {
     return Color.fromARGB(150, 255, 255, 255);
   }
+
   static Divider divider(context) {
     return Divider(
         height: getHeightByPercentage(context, 4), color: Colors.transparent);
@@ -69,6 +70,7 @@ class Global {
   static String UserLocation() {
     return "Implement this location";
   }
+
   static int percent(MedicalCondition medicalCond) {
     switch (medicalCond) {
       case MedicalCondition.migraine:
