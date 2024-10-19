@@ -18,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Divider divider = Divider(height: 10, color: Colors.transparent);
     Divider visibleDivider = Divider(height: 10, color: Colors.white);
     Divider buttonDivider = Divider(height: 20, color: Colors.transparent);
+    Divider tableDivider = Divider(height: 5, color: Colors.transparent);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Global.appBar(),
@@ -44,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               width: Global.getWidthByPercentage(context, 10)),
                           Image.asset('assets/sunnyweather.png'),
                           SizedBox(
-                            width: Global.getWidthByPercentage(context, 30),
+                            width: Global.getWidthByPercentage(context, 20),
                           ),
                           Text('80°', //FIXME temperature goes here
                               style: TextStyle(
@@ -54,9 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       divider,
                       Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                                20), // Adjust the radius as needed
-                            color: const Color.fromARGB(255, 211, 98, 98),
+                            color: Global.TableData(),
+                            borderRadius: BorderRadius.circular(20),
                           ),
                           //padding: const EdgeInsets.all(8.0),
                           alignment: Alignment.center,
@@ -66,51 +66,146 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: <Widget>[
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: Colors.green,
+                                      color: Global.TableHeader(),
                                       borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(20),
-                                        bottomLeft: Radius.circular(20),
                                       )),
-                                  height: 80,
-                                  child:
-                                      Text('Mon', textAlign: TextAlign.center),
+                                  height: 20,
+                                  child: Text('Mon',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.black)),
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: Colors.red,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        bottomLeft: Radius.circular(20),
-                                      )),
-                                  height: 80,
-                                  child:
-                                      Text('Tues', textAlign: TextAlign.center),
+                                      color: Global.TableHeader(),
+                                      borderRadius: BorderRadius.only()),
+                                  height: 20,
+                                  child: Text('Tues',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.black)),
                                 ),
                                 Container(
-                                  height: 80,
-                                  color: Colors.yellow,
+                                  height: 20,
+                                  color: Global.TableHeader(),
                                   child: Text('Wed [today]',
-                                      textAlign: TextAlign.center),
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.black)),
                                 ),
                                 Container(
-                                  height: 80,
-                                  color: Colors.blue,
+                                  height: 20,
+                                  color: Global.TableHeader(),
                                   child: Text('Thurs',
-                                      textAlign: TextAlign.center),
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.black)),
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: Global.TableHeader(),
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                      )),
+                                  height: 20,
+                                  child: Text('Fri',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.black)),
+                                ),
+                              ],
+                            ),
+                            TableRow(children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(20),
+                                      bottomRight: Radius.circular(20),
+                                    )),
+                                height: 40,
+                                child: Column(
+                                  children: [
+                                    tableDivider,
+                                    Text(
+                                      '0',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Global.textColor(),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.transparent,
                                       borderRadius: BorderRadius.only(
                                         topRight: Radius.circular(20),
                                         bottomRight: Radius.circular(20),
                                       )),
-                                  height: 80,
-                                  child:
-                                      Text('Fri', textAlign: TextAlign.center),
-                                ),
-                              ],
-                            )
+                                  height: 40,
+                                  child: Column(
+                                    children: [
+                                      tableDivider,
+                                      Text('1',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Global.textColor(),
+                                          )),
+                                    ],
+                                  )),
+                              Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                      )),
+                                  height: 40,
+                                  child: Column(
+                                    children: [
+                                      tableDivider,
+                                      Text('2',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Global.textColor(),
+                                          ))
+                                    ],
+                                  )),
+                              Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                      )),
+                                  height: 40,
+                                  child: Column(
+                                    children: [
+                                      tableDivider,
+                                      Text('3',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Global.textColor(),
+                                          ))
+                                    ],
+                                  )),
+                              Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.transparent,
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                      )),
+                                  height: 40,
+                                  child: Column(
+                                    children: [
+                                      tableDivider,
+                                      Text('4',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: Global.textColor(),
+                                          ))
+                                    ],
+                                  ))
+                            ]),
                           ]))
                     ],
                   )),

@@ -50,6 +50,13 @@ class Global {
     return Color.fromARGB(255, 255, 255, 255);
   }
 
+  static Color TableData() {
+    return Color.fromARGB(100, 255, 255, 255);
+  }
+
+  static Color TableHeader() {
+    return Color.fromARGB(150, 255, 255, 255);
+  }
   static Divider divider(context) {
     return Divider(
         height: getHeightByPercentage(context, 4), color: Colors.transparent);
