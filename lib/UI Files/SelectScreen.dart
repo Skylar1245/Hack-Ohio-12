@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackohio12/global_methods.dart';
 
 class SelectScreen extends StatefulWidget {
   const SelectScreen({super.key, required this.title});
@@ -12,15 +13,48 @@ class SelectScreen extends StatefulWidget {
 class _SkeletonState extends State<SelectScreen> {
   @override
   Widget build(BuildContext context) {
+    Decoration decoration = BoxDecoration(
+      gradient: Global.gradient(),
+      borderRadius: BorderRadius.circular(20), // Adjust the radius as needed
+    );
+
     return Scaffold(
+      backgroundColor: Global.background(),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Global.appBar(),
         title: Text(widget.title),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[Text("hello world")],
+          children: <Widget>[
+            Container(
+                decoration: decoration,
+                width: Global.getWidthByPercentage(context, 90),
+                height: Global.getHeightByPercentage(context, 70),
+                child: Column(children: [
+                  CheckboxListTile(
+                      title: Text(
+                        "Migraine",
+                        style: TextStyle(color: Global.textColor(), fontSize: 20),
+                      ),
+                      value: true,
+                      onChanged: null,
+                      controlAffinity: ListTileControlAffinity.leading),
+                  CheckboxListTile(
+                      title: Text("Asthma",
+                          style: TextStyle(color: Global.textColor(), fontSize: 20)),
+                      value: true,
+                      onChanged: null,
+                      controlAffinity: ListTileControlAffinity.leading),
+                  CheckboxListTile(
+                      title: Text("Arthritis",
+                          style: TextStyle(color: Global.textColor(), fontSize: 20)),
+                      value: true,
+                      onChanged: null,
+                      controlAffinity: ListTileControlAffinity.leading)
+                ]))
+          ],
         ),
       ),
     );
