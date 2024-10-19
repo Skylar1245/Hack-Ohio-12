@@ -41,7 +41,7 @@ class WeatherData {
   }
 
   ///Constructor
-  WeatherInterpreter() : _weatherFactory = WeatherFactory(_apiKey) {
+  WeatherData() : _weatherFactory = WeatherFactory(_apiKey) {
     _getUserPosition();
     _populateWeatherByLocation();
   }
