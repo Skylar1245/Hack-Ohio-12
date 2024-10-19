@@ -13,14 +13,14 @@ class Medicalbaseclass extends StatefulWidget {
 class _SkeletonState extends State<Medicalbaseclass> {
   @override
   Widget build(BuildContext context) {
-    Divider divider = Divider(
-        height: Global.getHeightByPercentage(context, 4),
-        color: Colors.transparent);
+    
     Decoration decoration = BoxDecoration(
       gradient: Global.gradient(),
       borderRadius: BorderRadius.circular(20), // Adjust the radius as needed
-      color: const Color.fromARGB(255, 17, 93, 136),
     );
+
+  
+
     return Scaffold(
       backgroundColor: Global.background(),
       appBar: AppBar(
@@ -30,37 +30,37 @@ class _SkeletonState extends State<Medicalbaseclass> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            divider,
+            Global.divider(context),
             Container(
                 decoration: decoration,
                 alignment: Alignment.center,
-                width: 375,
-                height: 100,
+                width: Global.getWidthByPercentage(context, 90),
+                height: Global.getHeightByPercentage(context, 10),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Text("Chances of Flare Up:",
                           style: TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255),
+                              color: Global.textColor(),
                               fontSize: 20)),
                       Container(
                           width: 70,
                           height: 70,
                           color: Color.fromARGB(255, 255, 255, 255))
                     ])),
-            divider,
+            Global.divider(context),
             Container(
                 decoration: decoration,
                 alignment: Alignment.center,
-                width: 375,
-                height: 500,
+                width: Global.getWidthByPercentage(context, 90),
+                height: Global.getHeightByPercentage(context, 60),
                 child: Text("graph")),
-            divider,
+            Global.divider(context),
             Container(
                 decoration: decoration,
-                width: 375,
-                height: 500,
-                alignment: Alignment.bottomCenter,
+                width: Global.getWidthByPercentage(context, 90),
+                height: Global.getHeightByPercentage(context, 40),
+                alignment: Alignment.center,
                 child: Text("more information"))
           ],
         ),

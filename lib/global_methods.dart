@@ -13,13 +13,14 @@ class Global {
     return MediaQuery.sizeOf(context).height * percentModifier;
   }
 
-  static LinearGradient gradient(){
+  static LinearGradient gradient() {
     return LinearGradient(
-          colors: [Colors.blue, Colors.purple],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        );
+      colors: [Colors.blue, Colors.purple],
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+    );
   }
+
   static Color background() {
     return Color.fromARGB(255, 230, 222, 235);
   }
@@ -34,5 +35,10 @@ class Global {
 
   static Color textColor() {
     return Color.fromARGB(255, 255, 255, 255);
+  }
+
+  static Divider divider(context) {
+    return Divider(
+        height: getHeightByPercentage(context, 4), color: Colors.transparent);
   }
 }
