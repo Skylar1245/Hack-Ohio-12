@@ -68,4 +68,17 @@ class Global {
         return 0;
     }
   }
+
+  static String description(int medicalCond) {
+    switch (medicalCond) {
+      case 1:
+        return "info about migraines";
+      case 2:
+        return "info about asthma";
+      case 3:
+        return "info about arthritis";
+      default:
+        return ":(";
+    }
+  }
 }
