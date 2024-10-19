@@ -65,26 +65,26 @@ class Global {
   static String UserLocation() {
     return "Implement this location";
   }
-  static int percent(int medicalCond) {
+  static int percent(MedicalCondition medicalCond) {
     switch (medicalCond) {
-      case 1:
+      case MedicalCondition.migraine:
         return 10;
-      case 2:
+      case MedicalCondition.asthma:
         return 20;
-      case 3:
+      case MedicalCondition.arthritis:
         return 30;
       default:
         return 0;
     }
   }
 
-  static String description(int medicalCond) {
+  static String description(MedicalCondition medicalCond) {
     switch (medicalCond) {
-      case 1:
+      case MedicalCondition.migraine:
         return "info about migraines";
-      case 2:
+      case MedicalCondition.asthma:
         return "info about asthma";
-      case 3:
+      case MedicalCondition.arthritis:
         return "info about arthritis";
       default:
         return ":(";
