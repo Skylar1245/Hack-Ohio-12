@@ -45,7 +45,7 @@ class _SkeletonState extends State<DataPage> {
                       Text("Chances of Flare Up:",
                           style: TextStyle(
                               color: Global.textColor(), fontSize: 20)),
-                      Text(widget.percent.toString() + "%",
+                      Text("${widget.percent}%",
                           style: TextStyle(color: Global.textColor(), fontSize: 50))
                     ])),
             Global.divider(context),
