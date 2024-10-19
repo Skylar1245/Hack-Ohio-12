@@ -45,13 +45,8 @@ class _SkeletonState extends State<DataPage> {
                       Text("Chances of Flare Up:",
                           style: TextStyle(
                               color: Global.textColor(), fontSize: 20)),
-                      Container(
-                          width: 70,
-                          height: 70,
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          alignment: Alignment.center,
-                          child: Text(widget.percent.toString() + "%",
-                              style: TextStyle(fontSize: 30))),
+                      Text(widget.percent.toString() + "%",
+                          style: TextStyle(color: Global.textColor(), fontSize: 50))
                     ])),
             Global.divider(context),
             Container(
@@ -65,12 +60,27 @@ class _SkeletonState extends State<DataPage> {
                 decoration: decoration,
                 width: Global.getWidthByPercentage(context, 90),
                 height: Global.getHeightByPercentage(context, 40),
-                alignment: Alignment.center,
+                //alignment: Alignment.center,
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    //crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text("MORE INFORMATION"),
-                      Text(widget.description)
+                      Divider(height: 10, color: Colors.transparent),
+                      Text("MORE INFORMATION",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 30, color: Global.textColor())),
+                      Divider(height: 10, color: Colors.transparent),
+                      Align(
+                          alignment: Alignment.topLeft,
+                          child: Row(children: [
+                            VerticalDivider(width: 15),
+                            Text(widget.description,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Global.textColor(),
+                                ))
+                          ])),
                     ]))
           ],
         ),
