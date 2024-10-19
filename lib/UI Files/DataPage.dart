@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hackohio12/global_methods.dart';
 
-class MigraineData extends StatefulWidget {
-  const MigraineData({super.key, required this.title, required this.percent});
+class DataPage extends StatefulWidget {
+  const DataPage({super.key, required this.title, required this.percent});
 
   final String title;
   final int percent;
 
   @override
-  State<MigraineData> createState() => _SkeletonState();
+  State<DataPage> createState() => _SkeletonState();
 }
 
-class _SkeletonState extends State<MigraineData> {
+class _SkeletonState extends State<DataPage> {
   @override
   Widget build(BuildContext context) {
     Decoration decoration = BoxDecoration(
