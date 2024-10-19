@@ -4,7 +4,7 @@ class WeatherAnalysis {
 
   WeatherData weatherData = WeatherData();
 
-  double CheckMigraine() {
+  double checkMigraine() {
 
     List<double?> fiveDayPressureData = weatherData.getFiveDayPressure();
 
