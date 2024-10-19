@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    Divider divider = Divider(height: 40, color: Colors.transparent);
+    Divider divider = Divider(height: 10, color: Colors.transparent);
     Divider buttonDivider = Divider(height: 20, color: Colors.transparent);
     return Scaffold(
         appBar: AppBar(
@@ -28,20 +28,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
                         20), // Adjust the radius as needed
-                    color: const Color.fromARGB(255, 17, 93, 136),
+                    gradient: Global.gradient(),
                   ),
-                  constraints: BoxConstraints.expand(
-                    height:
-                        Theme.of(context).textTheme.headlineMedium!.fontSize! *
-                                1.1 +
-                            200.0,
-                  ),
-                  //padding: const EdgeInsets.all(8.0),
                   alignment: Alignment.bottomCenter,
-                  width: 375,
+                  width: Global.getWidthByPercentage(context, 90),
+                  height: Global.getHeightByPercentage(context, 30),
                   child: Column(
                     children: [
-                      Text('Sun', style: TextStyle(fontSize: 30),),
+                      Text('Sun', style: TextStyle(fontSize: 30, color: Global.textColor())),
+                      //temperature goes here FIXME
                       Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
@@ -50,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           //padding: const EdgeInsets.all(8.0),
                           alignment: Alignment.center,
-                          width: 375,
+                          width: Global.getWidthByPercentage(context, 80),
                           child: Text('Weekly forecast'))
                     ],
                   )),
@@ -60,11 +55,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
                             20), // Adjust the radius as needed
-                        color: const Color.fromARGB(255, 201, 9, 9),
+                        gradient: Global.gradient(),
                       ),
                       //padding: const EdgeInsets.all(8.0),
                       alignment: Alignment.bottomCenter,
-                      width: 375,
+                      width: Global.getWidthByPercentage(context, 90),
+                      height: Global.getHeightByPercentage(context, 60),
                       child: ListView(
                           padding: const EdgeInsets.all(8),
                           children: <Widget>[
@@ -76,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           const Medicalbaseclass(
-                                              title: 'Medical')),
+                                              title: 'Migraines')),
                                 );
                               },
                               label: Text('Migraines'),
@@ -92,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           const Medicalbaseclass(
-                                              title: 'Medical')),
+                                              title: 'Asthma')),
                                 );
                               },
                               label: Text('Asthma'),
@@ -108,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           const Medicalbaseclass(
-                                              title: 'Medical')),
+                                              title: 'Arthritis')),
                                 );
                               },
                               label: Text('Arthritis'),
