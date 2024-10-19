@@ -24,7 +24,7 @@ class WeatherData {
   ///Weather forecast of 5 days
   List<Weather> _futureForecast = List.empty(growable: true);
 
-  ///
+  ///Weather forecast from 5 days in the past
   List<PreviousDay> _pastDays = List.empty(growable: true);
 
   ///OpenWeatherMap API key obtained for free at
@@ -34,6 +34,7 @@ class WeatherData {
   ///Constructor
   WeatherData() : _weatherFactory = WeatherFactory(_apiKey);
 
+  ///Fills all data fields of the [WeatherData]
   Future<void> initialize() async {
     await _populateFields();
   }
