@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackohio12/UI%20Files/medicalbaseClass.dart';
+import 'package:hackohio12/UI%20Files/MigraineData.dart';
 import 'package:hackohio12/global_methods.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const Medicalbaseclass(
+                                          const MigraineData(
                                               title: 'My Health')),
                                 );
                               },
@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const Medicalbaseclass(
+                                          const MigraineData(
                                               title: 'Migraines')),
                                 );
                               },
@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const Medicalbaseclass(
+                                          const MigraineData(
                                               title: 'Asthma')),
                                 );
                               },
@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const Medicalbaseclass(
+                                          const MigraineData(
                                               title: 'Arthritis')),
                                 );
                               },

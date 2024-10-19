@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hackohio12/global_methods.dart';
 
-class Medicalbaseclass extends StatefulWidget {
-  const Medicalbaseclass({super.key, required this.title});
+class MigraineData extends StatefulWidget {
+  const MigraineData({super.key, required this.title});
 
   final String title;
 
   @override
-  State<Medicalbaseclass> createState() => _SkeletonState();
+  State<MigraineData> createState() => _SkeletonState();
 }
 
-class _SkeletonState extends State<Medicalbaseclass> {
+class _SkeletonState extends State<MigraineData> {
   @override
   Widget build(BuildContext context) {
     
