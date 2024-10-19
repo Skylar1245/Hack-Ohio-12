@@ -28,93 +28,116 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                        20), // Adjust the radius as needed
-                    gradient: Global.gradient(),
-                  ),
-                  alignment: Alignment.bottomCenter,
-                  width: Global.getWidthByPercentage(context, 90),
-                  height: Global.getHeightByPercentage(context, 30),
-                  child: Column(
-                    children: [
-                      divider, Text(
-                      Global.UserLocation() //FIXME
+                decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.circular(20), // Adjust the radius as needed
+                  gradient: Global.gradient(),
+                ),
+                alignment: Alignment.bottomCenter,
+                width: Global.getWidthByPercentage(context, 90),
+                height: Global.getHeightByPercentage(context, 30),
+                child: Column(
+                  children: [
+                    divider,
+                    Row(
+                      children: [
+                        SizedBox(
+                            width: Global.getWidthByPercentage(context, 10)),
+                        Image.asset('assets/sunnyweather.png'),
+                        SizedBox(
+                          width: Global.getWidthByPercentage(context, 20),
+                        ),
+                        Text('80°', //FIXME temperature goes here
+                            style: TextStyle(
+                                fontSize: 50, color: Global.textColor())),
+                      ],
+                    ), tableDivider,
+                    Text(Global.UserLocation(), style: TextStyle(
+                      color: Global.textColor()
                     ),
-                      Row(
-                        children: [
-                          SizedBox(
-                              width: Global.getWidthByPercentage(context, 10)),
-                          Image.asset('assets/sunnyweather.png'),
-                          SizedBox(
-                            width: Global.getWidthByPercentage(context, 20),
-                          ),
-                          Text('80°', //FIXME temperature goes here
-                              style: TextStyle(
-                                  fontSize: 50, color: Global.textColor())),
-                        ],
-                      ),
-                      divider,
-                      Container(
-                          decoration: BoxDecoration(
-                            color: Global.TableData(),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          //padding: const EdgeInsets.all(8.0),
-                          alignment: Alignment.center,
-                          width: Global.getWidthByPercentage(context, 80),
-                          child: Table(children: [
-                            TableRow(
-                              children: <Widget>[
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: Global.TableHeader(),
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                      )),
-                                  height: 20,
-                                  child: Text('Mon',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.black)),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: Global.TableHeader(),
-                                      borderRadius: BorderRadius.only()),
-                                  height: 20,
-                                  child: Text('Tues',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.black)),
-                                ),
-                                Container(
-                                  height: 20,
-                                  color: Global.TableHeader(),
-                                  child: Text('Wed [today]',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.black)),
-                                ),
-                                Container(
-                                  height: 20,
-                                  color: Global.TableHeader(),
-                                  child: Text('Thurs',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.black)),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                      color: Global.TableHeader(),
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(20),
-                                      )),
-                                  height: 20,
-                                  child: Text('Fri',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(color: Colors.black)),
-                                ),
-                              ],
-                            ),
-                            TableRow(children: [
+                        ),
+                    divider,
+                    Container(
+                        decoration: BoxDecoration(
+                          color: Global.TableData(),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        //padding: const EdgeInsets.all(8.0),
+                        alignment: Alignment.center,
+                        width: Global.getWidthByPercentage(context, 80),
+                        child: Table(children: [
+                          TableRow(
+                            children: <Widget>[
                               Container(
+                                decoration: BoxDecoration(
+                                    color: Global.TableHeader(),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                    )),
+                                height: 20,
+                                child: Text('Mon',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(color: Colors.black)),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Global.TableHeader(),
+                                    borderRadius: BorderRadius.only()),
+                                height: 20,
+                                child: Text('Tues',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(color: Colors.black)),
+                              ),
+                              Container(
+                                height: 20,
+                                color: Global.TableHeader(),
+                                child: Text('Wed [today]',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(color: Colors.black)),
+                              ),
+                              Container(
+                                height: 20,
+                                color: Global.TableHeader(),
+                                child: Text('Thurs',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(color: Colors.black)),
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Global.TableHeader(),
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(20),
+                                    )),
+                                height: 20,
+                                child: Text('Fri',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(color: Colors.black)),
+                              ),
+                            ],
+                          ),
+                          TableRow(children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20),
+                                    bottomRight: Radius.circular(20),
+                                  )),
+                              height: 40,
+                              child: Column(
+                                children: [
+                                  tableDivider,
+                                  Text(
+                                    '0',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: Global.textColor(),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Container(
                                 decoration: BoxDecoration(
                                     color: Colors.transparent,
                                     borderRadius: BorderRadius.only(
@@ -125,92 +148,72 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Column(
                                   children: [
                                     tableDivider,
-                                    Text(
-                                      '0',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: Global.textColor(),
-                                      ),
-                                    )
+                                    Text('1',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Global.textColor(),
+                                        )),
                                   ],
-                                ),
-                              ),
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(20),
-                                        bottomRight: Radius.circular(20),
-                                      )),
-                                  height: 40,
-                                  child: Column(
-                                    children: [
-                                      tableDivider,
-                                      Text('1',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Global.textColor(),
-                                          )),
-                                    ],
-                                  )),
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(20),
-                                        bottomRight: Radius.circular(20),
-                                      )),
-                                  height: 40,
-                                  child: Column(
-                                    children: [
-                                      tableDivider,
-                                      Text('2',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Global.textColor(),
-                                          ))
-                                    ],
-                                  )),
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(20),
-                                        bottomRight: Radius.circular(20),
-                                      )),
-                                  height: 40,
-                                  child: Column(
-                                    children: [
-                                      tableDivider,
-                                      Text('3',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Global.textColor(),
-                                          ))
-                                    ],
-                                  )),
-                              Container(
-                                  decoration: BoxDecoration(
-                                      color: Colors.transparent,
-                                      borderRadius: BorderRadius.only(
-                                        topRight: Radius.circular(20),
-                                        bottomRight: Radius.circular(20),
-                                      )),
-                                  height: 40,
-                                  child: Column(
-                                    children: [
-                                      tableDivider,
-                                      Text('4',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            color: Global.textColor(),
-                                          ))
-                                    ],
-                                  ))
-                            ]),
-                          ]))
-                    ],
-                  ),),
+                                )),
+                            Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(20),
+                                      bottomRight: Radius.circular(20),
+                                    )),
+                                height: 40,
+                                child: Column(
+                                  children: [
+                                    tableDivider,
+                                    Text('2',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Global.textColor(),
+                                        ))
+                                  ],
+                                )),
+                            Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(20),
+                                      bottomRight: Radius.circular(20),
+                                    )),
+                                height: 40,
+                                child: Column(
+                                  children: [
+                                    tableDivider,
+                                    Text('3',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Global.textColor(),
+                                        ))
+                                  ],
+                                )),
+                            Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(20),
+                                      bottomRight: Radius.circular(20),
+                                    )),
+                                height: 40,
+                                child: Column(
+                                  children: [
+                                    tableDivider,
+                                    Text('4',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: Global.textColor(),
+                                        ))
+                                  ],
+                                ))
+                          ]),
+                        ]))
+                  ],
+                ),
+              ),
               divider,
               Expanded(
                   child: Container(
@@ -354,9 +357,40 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               icon: Icon(Icons.waving_hand_sharp,
                                   color: Colors.white),
+                            ),buttonDivider,
+                            FloatingActionButton.extended(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    20.0), // Adjust the radius for more/less rounding
+                                side: BorderSide(
+                                  color: Colors.white, // Border color
+                                  width: 2.0, // Border width
+                                ),
+                              ),
+                              backgroundColor: Global.TableData(), // Make FAB background transparent
+                              elevation: 0, // Remove shadow
+                              heroTag: "4",
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DataPage(
+                                      title: 'Add',
+                                      percent: Global.percent(3),
+                                      description: Global.description(3),
+                                    ),
+                                  ),
+                                );
+                              },
+                              label: Text(
+                                'Add Condition',
+                                style: TextStyle(color: Global.textColor()),
+                              ),
+                              icon: Icon(Icons.add,
+                                  color: Colors.white),
                             )
-                          ])))
-            ,divider])
-            );
+                          ]))),
+              divider
+            ]));
   }
 }
