@@ -35,10 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: Global.getWidthByPercentage(context, 90),
                   height: Global.getHeightByPercentage(context, 30),
                   child: Column(
-                    children: [
-                      Text('Sun',
+                    children: [//picture here
+                      Text('80°', //FIXME
                           style: TextStyle(
-                              fontSize: 30, color: Global.textColor())),
+                              fontSize: 50, color: Global.textColor())),
                       //temperature goes here FIXME
                       Container(
                           decoration: BoxDecoration(
