@@ -2,31 +2,33 @@ import 'package:hackohio12/Weather/weather_data.dart';
 import 'package:weather/weather.dart';
 
 class WeatherAnalysis {
-
   WeatherData weatherData = WeatherData();
 
   double checkMigraine() {
+    //Past data
+    List<double> pastFiveDayPressureData = weatherData.getPastPressures();
+    List<double> pastFiveDayTemperature = weatherData.getPastTemperatures();
+    List<double> pastFiveDayHumidity = weatherData.getPastHumidities();
+    List<double> pastFiveDayWind = weatherData.getPastWindSpeeds();
+    List<double> pastFiveDayPrecipitation = weatherData.getPastPrecipitations();
+    //Today Data
+    double todayPressure = weatherData.getTodaysPressure();
+    double todayHumidity = weatherData.getTodaysHumidity();
+    double todayWind = weatherData.getTodaysWind();
+    double todayPrecipitation = weatherData.getTodaysPrecipitation();
+    Temperature todayTemperature = weatherData.getTodaysTemperature();
 
-    List<double?> pastFiveDayPressureData = weatherData.getPastFiveDayPressure();
-    //List<double> pastFiveDayTemperature = weatherData.getPastFiveDayTemperature();
-    //List<double> pastFiveDayHumidity = weatherData.getPastFiveDayHumidity();
-    //List<double> pastFiveDayWind = weatherData.getPastFiveDayTemperature();
-    //List<double> pastFiveDayPrecipitation = weatherData.getPastFiveDayTemperature();
-    double todayPressure = weatherData.getTodaysPressure()!;
-    double todayHumidity = weatherData.getTodaysHumidity()!;
-    double todayWind = weatherData.getTodaysHumidity()!;
-    double todayPrecipitation = weatherData.getTodaysHumidity()!;
-    Temperature todayTemperature = weatherData.getTodaysTemperature()!;
-
-    // More than 500Pa pressure drop
-    //double? pressureChange = pastFiveDayPressureData[1] - pastFiveDayPressureData[0];
-
+    //More than 500Pa pressure drop
+    /*
+    double? pressureChange =
+        pastFiveDayPressureData[1] - pastFiveDayPressureData[0];
+    */
     double temperatureChange = 0;
 
     double migraineChance = 0;
-    
-    //List<double> prevSevenDays = List.empty();
-    
+
+    List<double> prevSevenDays = List.empty(growable: true);
+
     /*for (int i =  0; i < fiveDayPressure.length; i++ ) {
 
     }
@@ -43,5 +45,4 @@ class WeatherAnalysis {
     */
     return migraineChance;
   }
-
 }
