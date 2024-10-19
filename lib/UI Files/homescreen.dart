@@ -77,13 +77,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ),
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: Colors.green,
+                                      color: Colors.red,
                                       borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(20),
                                         bottomLeft: Radius.circular(20),
                                       )),
                                   height: 80,
-                                  color: Colors.red,
                                   child:
                                       Text('Tues', textAlign: TextAlign.center),
                                 ),
