@@ -149,6 +149,19 @@ class WeatherData {
     }
   }
 
+  ///Used to standardize lists
+  int _SortMostRecentFirst(PreviousDay day1, PreviousDay day2) {
+    DateTime date1 = DateTime(DateTime.now().year, day1.month, day1.day);
+    DateTime date2 = DateTime(DateTime.now().year, day2.month, day2.day);
+    if (date1.isAfter(date2)) {
+      return 1;
+    } else if (date1.isBefore(date2)) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
   ///Returns the previous 5 days of pressures
   List<double> getPastPressures() {
     List<double> pressures = List.empty(growable: true);
