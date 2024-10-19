@@ -179,8 +179,8 @@ class WeatherData {
   }
 
   ///Returns the previous 5 days of precipitation
-  List<double?> getPastPrecipitations() {
-    List<double?> precipitation = List.empty(growable: true);
+  List<double> getPastPrecipitations() {
+    List<double> precipitation = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
       precipitation.add(day.precipitation['mean']);
     }
@@ -188,8 +188,8 @@ class WeatherData {
   }
 
   ///Returns the previous 5 days of wind speeds
-  List<double?> getPastWindSpeeds() {
-    List<double?> windSpeeds = List.empty(growable: true);
+  List<double> getPastWindSpeeds() {
+    List<double> windSpeeds = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
       windSpeeds.add(day.wind['mean']);
     }
