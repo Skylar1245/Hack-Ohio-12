@@ -38,7 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: Global.getHeightByPercentage(context, 30),
                   child: Column(
                     children: [
-                      divider,
+                      divider, Text(
+                      Global.UserLocation() //FIXME
+                    ),
                       Row(
                         children: [
                           SizedBox(
@@ -208,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ]),
                           ]))
                     ],
-                  )),
+                  ),),
               divider,
               Expanded(
                   child: Container(
@@ -354,6 +356,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   color: Colors.white),
                             )
                           ])))
-            ]));
+            ,divider])
+            );
   }
 }

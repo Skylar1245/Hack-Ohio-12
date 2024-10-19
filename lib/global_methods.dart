@@ -62,7 +62,9 @@ class Global {
         height: getHeightByPercentage(context, 4), color: Colors.transparent);
   }
 
-
+  static String UserLocation() {
+    return "Implement this location";
+  }
   static int percent(int medicalCond) {
     switch (medicalCond) {
       case 1:
