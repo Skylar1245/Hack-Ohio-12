@@ -54,11 +54,11 @@ class Global {
     return Color.fromARGB(255, 255, 255, 255);
   }
 
-  static Color TableData() {
+  static Color tableData() {
     return Color.fromARGB(100, 255, 255, 255);
   }
 
-  static Color TableHeader() {
+  static Color tableHeader() {
     return Color.fromARGB(150, 255, 255, 255);
   }
 
@@ -67,7 +67,7 @@ class Global {
         height: getHeightByPercentage(context, 4), color: Colors.transparent);
   }
 
-  static String UserLocation() {
+  static String userLocation() {
     return "Implement this location";
   }
 

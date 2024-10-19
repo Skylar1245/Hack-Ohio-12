@@ -53,14 +53,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fontSize: 50, color: Global.textColor())),
                       ],
                     ), tableDivider,
-                    Text(Global.UserLocation(), style: TextStyle(
+                    Text(Global.userLocation(), style: TextStyle(
                       color: Global.textColor()
                     ),
                         ),
                     divider,
                     Container(
                         decoration: BoxDecoration(
-                          color: Global.TableData(),
+                          color: Global.tableData(),
                           borderRadius: BorderRadius.circular(20),
                         ),
                         //padding: const EdgeInsets.all(8.0),
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: <Widget>[
                               Container(
                                 decoration: BoxDecoration(
-                                    color: Global.TableHeader(),
+                                    color: Global.tableHeader(),
                                     borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(20),
                                     )),
@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: Global.TableHeader(),
+                                    color: Global.tableHeader(),
                                     borderRadius: BorderRadius.only()),
                                 height: 20,
                                 child: Text('Tues',
@@ -91,21 +91,21 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               Container(
                                 height: 20,
-                                color: Global.TableHeader(),
+                                color: Global.tableHeader(),
                                 child: Text('Wed [today]',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(color: Colors.black)),
                               ),
                               Container(
                                 height: 20,
-                                color: Global.TableHeader(),
+                                color: Global.tableHeader(),
                                 child: Text('Thurs',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(color: Colors.black)),
                               ),
                               Container(
                                 decoration: BoxDecoration(
-                                    color: Global.TableHeader(),
+                                    color: Global.tableHeader(),
                                     borderRadius: BorderRadius.only(
                                       topRight: Radius.circular(20),
                                     )),
@@ -368,7 +368,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   width: 2.0, // Border width
                                 ),
                               ),
-                              backgroundColor: Global.TableData(), // Make FAB background transparent
+                              backgroundColor: Global.tableData(), // Make FAB background transparent
                               elevation: 0, // Remove shadow
                               heroTag: "4",
                               onPressed: () {
