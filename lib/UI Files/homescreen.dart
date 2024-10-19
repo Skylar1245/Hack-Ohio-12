@@ -15,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Divider divider = Divider(height: 10, color: Colors.transparent);
+    Divider visibleDivider = Divider(height: 10, color: Colors.white);
     Divider buttonDivider = Divider(height: 20, color: Colors.transparent);
     return Scaffold(
         appBar: AppBar(
@@ -64,6 +65,21 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: ListView(
                           padding: const EdgeInsets.all(8),
                           children: <Widget>[
+                            FloatingActionButton.extended(
+                              heroTag: "0",
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const Medicalbaseclass(
+                                              title: 'My Health')),
+                                );
+                              },
+                              label: Text('My Health'),
+                              icon: Icon(Icons.thumb_down),
+                              backgroundColor: Colors.pink,
+                            ), visibleDivider,
                             FloatingActionButton.extended(
                               heroTag: "1",
                               onPressed: () {
