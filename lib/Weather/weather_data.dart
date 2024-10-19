@@ -32,18 +32,7 @@ class WeatherData {
   static final String _apiKey = "6bc5a74652a7e36c118775e11f341534";
 
   ///Constructor
-  WeatherData() : _weatherFactory = WeatherFactory(_apiKey) {
-    initialize();
-  }
-
-  Future<void> initialize() async {
-    await _populateFields();
-  }
-
-  ///Constructor
-  WeatherData() : _weatherFactory = WeatherFactory(_apiKey) {
-    initialize();
-  }
+  WeatherData() : _weatherFactory = WeatherFactory(_apiKey);
 
   Future<void> initialize() async {
     await _populateFields();
@@ -80,13 +69,9 @@ class WeatherData {
   ///Returns the current pressure at time of call
   double getTodaysPressure() {
     return weather.pressure!;
-  double getTodaysPressure() {
-    return weather.pressure!;
   }
 
   ///Returns the current humidity at time of call
-  double getTodaysHumidity() {
-    return weather.humidity!;
   double getTodaysHumidity() {
     return weather.humidity!;
   }
@@ -94,23 +79,8 @@ class WeatherData {
   ///Returns the current temperature at time of call
   Temperature getTodaysTemperature() {
     return weather.temperature!;
-  Temperature getTodaysTemperature() {
-    return weather.temperature!;
   }
 
-  ///Returns the current precipitation at time of call
-  double getTodaysPrecipitation() {
-    return weather.rainLast3Hours!;
-  }
-
-  ///Returns the current wind speed at time of call
-  double getTodaysWind() {
-    return weather.windSpeed!;
-  }
-
-  ///Returns the upcoming 5 days of  pressures
-  List<double> getUpcomingPressures() {
-    List<double> pressures = List.empty(growable: true);
   ///Returns the current precipitation at time of call
   double getTodaysPrecipitation() {
     return weather.rainLast3Hours!;
@@ -125,7 +95,6 @@ class WeatherData {
   List<double> getUpcomingPressures() {
     List<double> pressures = List.empty(growable: true);
     for (Weather w in _futureForecast) {
-      pressures.add(w.pressure!);
       pressures.add(w.pressure!);
     }
     return pressures;
@@ -134,11 +103,7 @@ class WeatherData {
   ///Returns the upcoming 5 days of humidities
   List<double> getUpcomingHumidities() {
     List<double> humidities = List.empty(growable: true);
-  ///Returns the upcoming 5 days of humidities
-  List<double> getUpcomingHumidities() {
-    List<double> humidities = List.empty(growable: true);
     for (Weather w in _futureForecast) {
-      humidities.add(w.humidity!);
       humidities.add(w.humidity!);
     }
     return humidities;
@@ -147,35 +112,12 @@ class WeatherData {
   ///Returns the upcoming 5 days of temperatures
   List<double> getUpcomingTemperatures() {
     List<double> humidities = List.empty(growable: true);
-  ///Returns the upcoming 5 days of temperatures
-  List<double> getUpcomingTemperatures() {
-    List<double> humidities = List.empty(growable: true);
     for (Weather w in _futureForecast) {
-      humidities.add(w.humidity!);
       humidities.add(w.humidity!);
     }
     return humidities;
   }
 
-  ///Returns the upcoming 5 days of rain
-  List<double> getUpcomingPrecipitations() {
-    List<double> precipitations = List.empty(growable: true);
-    for (Weather w in _futureForecast) {
-      precipitations.add(w.rainLast3Hours!);
-    }
-    return precipitations;
-  }
-
-  ///Returns the upcoming 5 days of wind speeds
-  List<double> getUpcomingWindSpeeds() {
-    List<double> windSpeeds = List.empty(growable: true);
-    for (Weather w in _futureForecast) {
-      windSpeeds.add(w.windSpeed!);
-    }
-    return windSpeeds;
-  }
-
-  ///utility method to get consistence across past and future
   ///Returns the upcoming 5 days of rain
   List<double> getUpcomingPrecipitations() {
     List<double> precipitations = List.empty(growable: true);
@@ -209,9 +151,6 @@ class WeatherData {
   ///Returns the previous 5 days of pressures
   List<double> getPastPressures() {
     List<double> pressures = List.empty(growable: true);
-  ///Returns the previous 5 days of pressures
-  List<double> getPastPressures() {
-    List<double> pressures = List.empty(growable: true);
     Iterable<PreviousDay> days = _pastDays.where((day) => _isPastFiveDays(day));
     for (PreviousDay day in days) {
       pressures.add(day.pressure['mean']);
@@ -219,9 +158,6 @@ class WeatherData {
     return pressures;
   }
 
-  ///Returns the previous 5 days of humidity
-  List<double> getPastHumidities() {
-    List<double> humidities = List.empty(growable: true);
   ///Returns the previous 5 days of humidity
   List<double> getPastHumidities() {
     List<double> humidities = List.empty(growable: true);
@@ -244,7 +180,6 @@ class WeatherData {
   List<double> getPastPrecipitations() {
     List<double> precipitation = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
-      precipitation.add(day.precipitation['mean']);
       precipitation.add(day.precipitation['mean']);
     }
     return precipitation;
