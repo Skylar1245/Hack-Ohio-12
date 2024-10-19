@@ -12,4 +12,27 @@ class Global {
     double percentModifier = percentage / 100;
     return MediaQuery.sizeOf(context).height * percentModifier;
   }
+
+  static LinearGradient gradient(){
+    return LinearGradient(
+          colors: [Colors.blue, Colors.purple],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        );
+  }
+  static Color background() {
+    return Color.fromARGB(255, 227, 164, 227);
+  }
+
+  static Color buttons() {
+    return Color.fromARGB(255, 0, 0, 0);
+  }
+
+  static Color foreground() {
+    return Color.fromARGB(255, 0, 0, 0);
+  }
+
+  static Color textColor() {
+    return Color.fromARGB(255, 255, 255, 255);
+  }
 }
