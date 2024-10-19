@@ -1,3 +1,4 @@
+import 'package:hackohio12/permissions.dart';
 import 'package:weather/weather.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -24,7 +25,7 @@ class WeatherInterpreter {
 
   ///Updates this class's user location members
   void _getUserPosition() async {
-    //TODO ask for location permissions
+    await Permissions.requestLocationPermission();
     GeolocatorPlatform geolocatorPlatform = GeolocatorPlatform.instance;
     Position position = await geolocatorPlatform.getCurrentPosition();
     _userLatitude = position.latitude;
