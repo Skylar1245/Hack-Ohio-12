@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hackohio12/global_methods.dart';
 
 class MigraineData extends StatefulWidget {
-  const MigraineData({super.key, required this.title});
+  const MigraineData({super.key, required this.title, required this.percent});
 
   final String title;
+  final int percent;
 
   @override
   State<MigraineData> createState() => _SkeletonState();
@@ -13,18 +14,15 @@ class MigraineData extends StatefulWidget {
 class _SkeletonState extends State<MigraineData> {
   @override
   Widget build(BuildContext context) {
-    
     Decoration decoration = BoxDecoration(
       gradient: Global.gradient(),
       borderRadius: BorderRadius.circular(20), // Adjust the radius as needed
     );
 
-  
-
     return Scaffold(
       backgroundColor: Global.background(),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Global.appBar(),
         title: Text(widget.title),
       ),
       body: SingleChildScrollView(
@@ -41,12 +39,12 @@ class _SkeletonState extends State<MigraineData> {
                     children: [
                       Text("Chances of Flare Up:",
                           style: TextStyle(
-                              color: Global.textColor(),
-                              fontSize: 20)),
+                              color: Global.textColor(), fontSize: 20)),
                       Container(
                           width: 70,
                           height: 70,
-                          color: Color.fromARGB(255, 255, 255, 255))
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          child: Text(widget.percent.toString() + "%")),
                     ])),
             Global.divider(context),
             Container(
@@ -61,7 +59,9 @@ class _SkeletonState extends State<MigraineData> {
                 width: Global.getWidthByPercentage(context, 90),
                 height: Global.getHeightByPercentage(context, 40),
                 alignment: Alignment.center,
-                child: Text("more information"))
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [Text("MORE INFORMATION")]))
           ],
         ),
       ),

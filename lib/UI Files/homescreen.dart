@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        const MigraineData(title: 'My Health'),
+                                        const MigraineData(title: 'My Health', percent: 10,),
                                   ),
                                 );
                               },
@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        const MigraineData(title: 'Migraines'),
+                                        const MigraineData(title: 'Migraines', percent: 10,),
                                   ),
                                 );
                               },
@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        const MigraineData(title: 'Asthma'),
+                                        const MigraineData(title: 'Asthma', percent: 10,),
                                   ),
                                 );
                               },
@@ -163,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        const MigraineData(title: 'Arthritis'),
+                                        const MigraineData(title: 'Arthritis', percent: 10,),
                                   ),
                                 );
                               },
