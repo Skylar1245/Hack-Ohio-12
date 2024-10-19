@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackohio12/Weather/weather_data.dart';
 
 enum MedicalCondition {
   migraine(1),
@@ -14,6 +15,9 @@ enum MedicalCondition {
 }
 
 class Global {
+  ///WeatherData to reference anywhere needed
+  static WeatherData weatherData = WeatherData();
+
   ///Returns a scaled widget width based on a percentage of the screen width
   static double getWidthByPercentage(BuildContext context, int percentage) {
     double percentModifier = percentage / 100;
@@ -54,7 +58,6 @@ class Global {
     return Divider(
         height: getHeightByPercentage(context, 4), color: Colors.transparent);
   }
-
 
   static int percent(int medicalCond) {
     switch (medicalCond) {

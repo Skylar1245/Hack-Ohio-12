@@ -59,14 +59,13 @@ class WeatherData {
     }
   }
 
-  Future<void> initialize() async {
+  Future<bool> initialize() async {
     await _populateFields();
+    return true;
   }
 
   ///Constructor
-  WeatherData() : _weatherFactory = WeatherFactory(_apiKey) {
-    initialize();
-  }
+  WeatherData() : _weatherFactory = WeatherFactory(_apiKey);
 
   ///Returns the current pressure at time of call
   double? getTodaysPressure() {
