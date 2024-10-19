@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:hackohio12/global_methods.dart';
 
 class DataPage extends StatefulWidget {
-  const DataPage({super.key, required this.title, required this.percent});
+  const DataPage(
+      {super.key,
+      required this.title,
+      required this.percent,
+      required this.description});
 
   final String title;
   final int percent;
+  final String description;
 
   @override
   State<DataPage> createState() => _SkeletonState();
@@ -63,7 +68,10 @@ class _SkeletonState extends State<DataPage> {
                 alignment: Alignment.center,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [Text("MORE INFORMATION")]))
+                    children: [
+                      Text("MORE INFORMATION"),
+                      Text(widget.description)
+                    ]))
           ],
         ),
       ),

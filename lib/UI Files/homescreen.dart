@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackohio12/UI%20Files/DataPage.dart';
+import 'package:hackohio12/UI%20Files/UserInput.dart';
 import 'package:hackohio12/global_methods.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -92,9 +93,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const DataPage(
-                                      title: 'My Health',
-                                      percent: 10,
+                                    builder: (context) => UserInput(
+                                      title: 'My Health'
                                     ),
                                   ),
                                 );
@@ -126,9 +126,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const DataPage(
+                                    builder: (context) => DataPage(
                                       title: 'Migraines',
-                                      percent: 10,
+                                      percent: Global.percent(1),
+                                      description: Global.description(1),
                                     ),
                                   ),
                                 );
@@ -157,9 +158,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const DataPage(
+                                    builder: (context) => DataPage(
                                       title: 'Asthma',
-                                      percent: 10,
+                                      percent: Global.percent(2),
+                                      description: Global.description(2),
                                     ),
                                   ),
                                 );
@@ -188,9 +190,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const DataPage(
+                                    builder: (context) =>  DataPage(
                                       title: 'Arthritis',
-                                      percent: 10,
+                                      percent: Global.percent(3),
+                                      description: Global.description(3),
                                     ),
                                   ),
                                 );
