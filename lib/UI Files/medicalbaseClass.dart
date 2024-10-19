@@ -13,13 +13,14 @@ class Medicalbaseclass extends StatefulWidget {
 class _SkeletonState extends State<Medicalbaseclass> {
   @override
   Widget build(BuildContext context) {
-    Divider divider = Divider(height: Global.getHeightByPercentage(context, 4), color: Colors.transparent);
+    Divider divider = Divider(
+        height: Global.getHeightByPercentage(context, 4),
+        color: Colors.transparent);
     Decoration decoration = BoxDecoration(
       gradient: Global.gradient(),
-                  borderRadius:
-                      BorderRadius.circular(20), // Adjust the radius as needed
-                  color: const Color.fromARGB(255, 17, 93, 136),
-                );
+      borderRadius: BorderRadius.circular(20), // Adjust the radius as needed
+      color: const Color.fromARGB(255, 17, 93, 136),
+    );
     return Scaffold(
       backgroundColor: Global.background(),
       appBar: AppBar(
@@ -36,22 +37,27 @@ class _SkeletonState extends State<Medicalbaseclass> {
                 width: 375,
                 height: 100,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text("Chances of Flare Up:", style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), fontSize: 20)),
-                    Container(width: 70, height: 70, color: Color.fromARGB(255, 255, 255, 255))
-                  ]
-)),
-                divider,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text("Chances of Flare Up:",
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              fontSize: 20)),
+                      Container(
+                          width: 70,
+                          height: 70,
+                          color: Color.fromARGB(255, 255, 255, 255))
+                    ])),
+            divider,
             Container(
                 decoration: decoration,
                 alignment: Alignment.center,
                 width: 375,
                 height: 500,
                 child: Text("graph")),
-                divider,
+            divider,
             Container(
-              decoration: decoration,
+                decoration: decoration,
                 width: 375,
                 height: 500,
                 alignment: Alignment.bottomCenter,

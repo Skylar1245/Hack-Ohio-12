@@ -21,15 +21,15 @@ class Global {
         );
   }
   static Color background() {
-    return Color.fromARGB(255, 227, 164, 227);
+    return Color.fromARGB(255, 230, 222, 235);
   }
 
-  static Color buttons() {
-    return Color.fromARGB(255, 0, 0, 0);
+  static Color appBar() {
+    return Color.fromARGB(255, 255, 255, 255);
   }
 
   static Color foreground() {
-    return Color.fromARGB(255, 0, 0, 0);
+    return Color.fromARGB(255, 255, 255, 255);
   }
 
   static Color textColor() {

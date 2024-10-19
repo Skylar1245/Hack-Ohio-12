@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackohio12/UI%20Files/medicalbaseClass.dart';
+import 'package:hackohio12/global_methods.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
@@ -17,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Divider buttonDivider = Divider(height: 20, color: Colors.transparent);
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          backgroundColor: Global.appBar(),
           title: Text(widget.title),
         ),
         body: Column(
