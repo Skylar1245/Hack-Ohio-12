@@ -54,31 +54,41 @@ class Global {
     return Color.fromARGB(255, 255, 255, 255);
   }
 
+  static Color TableData() {
+    return Color.fromARGB(100, 255, 255, 255);
+  }
+
+  static Color TableHeader() {
+    return Color.fromARGB(150, 255, 255, 255);
+  }
   static Divider divider(context) {
     return Divider(
         height: getHeightByPercentage(context, 4), color: Colors.transparent);
   }
 
-  static int percent(int medicalCond) {
+  static String UserLocation() {
+    return "Implement this location";
+  }
+  static int percent(MedicalCondition medicalCond) {
     switch (medicalCond) {
-      case 1:
+      case MedicalCondition.migraine:
         return 10;
-      case 2:
+      case MedicalCondition.asthma:
         return 20;
-      case 3:
+      case MedicalCondition.arthritis:
         return 30;
       default:
         return 0;
     }
   }
 
-  static String description(int medicalCond) {
+  static String description(MedicalCondition medicalCond) {
     switch (medicalCond) {
-      case 1:
+      case MedicalCondition.migraine:
         return "info about migraines";
-      case 2:
+      case MedicalCondition.asthma:
         return "info about asthma";
-      case 3:
+      case MedicalCondition.arthritis:
         return "info about arthritis";
       default:
         return ":(";
