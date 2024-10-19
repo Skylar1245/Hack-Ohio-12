@@ -40,9 +40,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       divider,
                       Row(
                         children: [
-                          SizedBox(width: Global.getWidthByPercentage(context, 10)),
-                          Image.asset('assets/sunnyweather.png'), SizedBox(width: Global.getWidthByPercentage(context, 30),),
-                          Text('80°', //FIXME temperature goes here 
+                          SizedBox(
+                              width: Global.getWidthByPercentage(context, 10)),
+                          Image.asset('assets/sunnyweather.png'),
+                          SizedBox(
+                            width: Global.getWidthByPercentage(context, 30),
+                          ),
+                          Text('80°', //FIXME temperature goes here
                               style: TextStyle(
                                   fontSize: 50, color: Global.textColor())),
                         ],
@@ -57,7 +61,52 @@ class _HomeScreenState extends State<HomeScreen> {
                           //padding: const EdgeInsets.all(8.0),
                           alignment: Alignment.center,
                           width: Global.getWidthByPercentage(context, 80),
-                          child: Text('Weekly forecast'))
+                          child: Table(children: [
+                            TableRow(
+                              children: <Widget>[
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        bottomLeft: Radius.circular(20),
+                                      )),
+                                  height: 80,
+                                  child:
+                                      Text('Mon', textAlign: TextAlign.center),
+                                ),
+                                Container(
+                                  height: 80,
+                                  color: Colors.red,
+                                  child:
+                                      Text('Tues', textAlign: TextAlign.center),
+                                ),
+                                Container(
+                                  height: 80,
+                                  color: Colors.yellow,
+                                  child: Text('Wed [today]',
+                                      textAlign: TextAlign.center),
+                                ),
+                                Container(
+                                  height: 80,
+                                  color: Colors.blue,
+                                  child: Text('Thurs',
+                                      textAlign: TextAlign.center),
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                      )),
+                                  height: 80,
+                                  child:
+                                      Text('Fri', textAlign: TextAlign.center),
+                                ),
+                              ],
+                            )
+                          ]))
                     ],
                   )),
               divider,
@@ -93,9 +142,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => UserInput(
-                                      title: 'My Health'
-                                    ),
+                                    builder: (context) =>
+                                        UserInput(title: 'My Health'),
                                   ),
                                 );
                               },
@@ -190,7 +238,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>  DataPage(
+                                    builder: (context) => DataPage(
                                       title: 'Arthritis',
                                       percent: Global.percent(3),
                                       description: Global.description(3),
