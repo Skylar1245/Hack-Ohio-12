@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hackohio12/UI%20Files/MigraineData.dart';
+import 'package:hackohio12/UI%20Files/DataPage.dart';
 import 'package:hackohio12/global_methods.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const MigraineData(
+                                    builder: (context) => const DataPage(
                                       title: 'My Health',
                                       percent: 10,
                                     ),
@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const MigraineData(
+                                    builder: (context) => const DataPage(
                                       title: 'Migraines',
                                       percent: 10,
                                     ),
@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const MigraineData(
+                                    builder: (context) => const DataPage(
                                       title: 'Asthma',
                                       percent: 10,
                                     ),
@@ -180,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const MigraineData(
+                                    builder: (context) => const DataPage(
                                       title: 'Arthritis',
                                       percent: 10,
                                     ),
