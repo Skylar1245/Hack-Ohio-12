@@ -1,5 +1,18 @@
 import 'package:flutter/material.dart';
 
+enum MedicalCondition {
+  migraine(1),
+  asthma(2),
+  arthritis(3);
+
+  const MedicalCondition(this.value);
+  final int value;
+
+  static MedicalCondition fromValue(int value) {
+    return MedicalCondition.values.firstWhere((e) => e.value == value);
+  }
+}
+
 class Global {
   ///Returns a scaled widget width based on a percentage of the screen width
   static double getWidthByPercentage(BuildContext context, int percentage) {
@@ -40,5 +53,19 @@ class Global {
   static Divider divider(context) {
     return Divider(
         height: getHeightByPercentage(context, 4), color: Colors.transparent);
+  }
+
+
+  static int percent(int medicalCond) {
+    switch (medicalCond) {
+      case 1:
+        return 10;
+      case 2:
+        return 20;
+      case 3:
+        return 30;
+      default:
+        return 0;
+    }
   }
 }

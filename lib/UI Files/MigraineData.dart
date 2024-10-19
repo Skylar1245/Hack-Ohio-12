@@ -44,7 +44,9 @@ class _SkeletonState extends State<MigraineData> {
                           width: 70,
                           height: 70,
                           color: Color.fromARGB(255, 255, 255, 255),
-                          child: Text(widget.percent.toString() + "%")),
+                          alignment: Alignment.center,
+                          child: Text(widget.percent.toString() + "%",
+                              style: TextStyle(fontSize: 30))),
                     ])),
             Global.divider(context),
             Container(
