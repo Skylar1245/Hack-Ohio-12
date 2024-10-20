@@ -1,6 +1,10 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPref {
+  static int migraineCounter = 0;
+  static int asthmaCounter = 0;
+  static int arthritisCounter = 0;
+
   bool migraine = false;
   bool asthma = false;
   bool arthritis = false;
@@ -18,23 +22,9 @@ class UserPref {
     asthma = await getAsthma();
     arthritis = await getArthritis();
 
-    if (migraine) {
-      migraineCount = await getMigraineCounter();
-    } else {
-      migraineCount = 0;
-    }
-
-    if (asthma) {
-      asthmaCount = await getAsthmaCounter();
-    } else {
-      asthmaCount = 0;
-    }
-
-    if (arthritis) {
-      arthritisCount = await getArthritisCounter();
-    } else {
-      arthritisCount = 0;
-    }
+    migraineCount = await getMigraineCounter();
+    asthmaCount = await getAsthmaCounter();
+    arthritisCount = await getArthritisCounter();
 
     migraineCountToggle = await getMigraineCountToggle();
     asthmaCountToggle = await getAsthmaCountToggle();
@@ -57,6 +47,7 @@ class UserPref {
   }
 
   Future<void> incMigraine() async {
+    asthmaCounter++;
     final preferences = await SharedPreferences.getInstance();
 
     await preferences.setInt('migraineCount', migraineCount++);
@@ -94,6 +85,7 @@ class UserPref {
   }
 
   Future<void> incAsthma() async {
+    asthmaCounter++;
     final preferences = await SharedPreferences.getInstance();
 
     await preferences.setInt('asthmaCount', asthmaCount++);
@@ -131,6 +123,7 @@ class UserPref {
   }
 
   Future<void> incArthritis() async {
+    arthritisCounter++;
     final preferences = await SharedPreferences.getInstance();
 
     await preferences.setInt('arthritisCount', arthritisCount++);
