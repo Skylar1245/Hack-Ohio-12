@@ -24,7 +24,7 @@ class WeatherData {
   ///Weather forecast of 5 days
   List<Weather> _futureForecast = List.empty(growable: true);
 
-  ///
+  ///Weather forecast from 5 days in the past
   List<PreviousDay> _pastDays = List.empty(growable: true);
 
   ///OpenWeatherMap API key obtained for free at
@@ -34,6 +34,7 @@ class WeatherData {
   ///Constructor
   WeatherData() : _weatherFactory = WeatherFactory(_apiKey);
 
+  ///Fills all data fields of the [WeatherData]
   Future<void> initialize() async {
     await _populateFields();
   }
@@ -145,6 +146,19 @@ class WeatherData {
       return true;
     } else {
       return false;
+    }
+  }
+
+  ///Used to standardize lists
+  int _SortMostRecentFirst(PreviousDay day1, PreviousDay day2) {
+    DateTime date1 = DateTime(DateTime.now().year, day1.month, day1.day);
+    DateTime date2 = DateTime(DateTime.now().year, day2.month, day2.day);
+    if (date1.isAfter(date2)) {
+      return 1;
+    } else if (date1.isBefore(date2)) {
+      return -1;
+    } else {
+      return 0;
     }
   }
 
