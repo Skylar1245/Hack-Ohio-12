@@ -1,10 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPref {
-  static int migraineCounter = 0;
-  static int asthmaCounter = 0;
-  static int arthritisCounter = 0;
-
   bool migraine = false;
   bool asthma = false;
   bool arthritis = false;
@@ -47,10 +43,9 @@ class UserPref {
   }
 
   Future<void> incMigraine() async {
-    asthmaCounter++;
     final preferences = await SharedPreferences.getInstance();
 
-    await preferences.setInt('migraineCount', migraineCount++);
+    await preferences.setInt('migraineCount', ++migraineCount);
   }
 
   Future<int> getMigraineCounter() async {
@@ -85,10 +80,9 @@ class UserPref {
   }
 
   Future<void> incAsthma() async {
-    asthmaCounter++;
     final preferences = await SharedPreferences.getInstance();
 
-    await preferences.setInt('asthmaCount', asthmaCount++);
+    await preferences.setInt('asthmaCount', ++asthmaCount);
   }
 
   Future<int> getAsthmaCounter() async {
@@ -123,10 +117,9 @@ class UserPref {
   }
 
   Future<void> incArthritis() async {
-    arthritisCounter++;
     final preferences = await SharedPreferences.getInstance();
 
-    await preferences.setInt('arthritisCount', arthritisCount++);
+    await preferences.setInt('arthritisCount', ++arthritisCount);
   }
 
   Future<int> getArthritisCounter() async {
