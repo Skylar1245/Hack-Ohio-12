@@ -1,49 +1,48 @@
 import 'package:hackohio12/Weather/weather_data.dart';
+import 'package:hackohio12/global_methods.dart';
 import 'package:weather/weather.dart';
 
 class WeatherAnalysis {
-  WeatherData weatherData = WeatherData();
-
   List<double> checkMigraineToday() {
     /*
     //Past data
-    List<double> pastFiveDayPressureData = weatherData.getPastPressures();
-    List<double> pastFiveDayTemperature = weatherData.getPastTemperatures();
-    List<double> pastFiveDayHumidity = weatherData.getPastHumidities();
-    List<double> pastFiveDayWindSpeed = weatherData.getPastWindSpeeds();
-    List<double> pastFiveDayPrecipitation = weatherData.getPastPrecipitations();
+    List<double> pastFiveDayPressureData = Global.weatherData.getPastPressures();
+    List<double> pastFiveDayTemperature = Global.weatherData.getPastTemperatures();
+    List<double> pastFiveDayHumidity = Global.weatherData.getPastHumidities();
+    List<double> pastFiveDayWindSpeed = Global.weatherData.getPastWindSpeeds();
+    List<double> pastFiveDayPrecipitation = Global.weatherData.getPastPrecipitations();
     //Today Data
-    double todayPressure = weatherData.getTodaysPressure();
-    double todayHumidity = weatherData.getTodaysHumidity();
-    double todayWindSpeed = weatherData.getTodaysWind();
-    double todayPrecipitation = weatherData.getTodaysPrecipitation();
-    Temperature todayTemperature = weatherData.getTodaysTemperature();
+    double todayPressure = Global.weatherData.getTodaysPressure();
+    double todayHumidity = Global.weatherData.getTodaysHumidity();
+    double todayWindSpeed = Global.weatherData.getTodaysWind();
+    double todayPrecipitation = Global.weatherData.getTodaysPrecipitation();
+    Temperature todayTemperature = Global.weatherData.getTodaysTemperature();
     // Future Predictions
-    List<double> futureFiveDayPressureData = weatherData.getUpcomingPressures();
-    List<double> futureFiveDayTemperature = weatherData.getUpcomingTemperatures();
-    List<double> futureFiveDayHumidity = weatherData.getUpcomingHumidities();
-    List<double> futureFiveDayWindSpeed = weatherData.getUpcomingWindSpeeds();
-    List<double> futureFiveDayPrecipitation = weatherData.getUpcomingPrecipitations();
+    List<double> futureFiveDayPressureData = Global.weatherData.getUpcomingPressures();
+    List<double> futureFiveDayTemperature = Global.weatherData.getUpcomingTemperatures();
+    List<double> futureFiveDayHumidity = Global.weatherData.getUpcomingHumidities();
+    List<double> futureFiveDayWindSpeed = Global.weatherData.getUpcomingWindSpeeds();
+    List<double> futureFiveDayPrecipitation = Global.weatherData.getUpcomingPrecipitations();
     */
 
     //Past data
-    List<double> pressures = weatherData.getPastPressures();
-    List<double> temperatures = weatherData.getPastTemperatures();
-    List<double> humidities = weatherData.getPastHumidities();
-    List<double> windSpeeds = weatherData.getPastWindSpeeds();
-    List<double> precipitations = weatherData.getPastPrecipitations();
+    List<double> pressures = Global.weatherData.getPastPressures();
+    List<double> temperatures = Global.weatherData.getPastTemperatures();
+    List<double> humidities = Global.weatherData.getPastHumidities();
+    List<double> windSpeeds = Global.weatherData.getPastWindSpeeds();
+    List<double> precipitations = Global.weatherData.getPastPrecipitations();
     //Today Data
-    pressures.add(weatherData.getTodaysPressure());
-    temperatures.add(weatherData.getTodaysTemperature().kelvin!);
-    humidities.add(weatherData.getTodaysHumidity());
-    windSpeeds.add(weatherData.getTodaysWind());
-    precipitations.add(weatherData.getTodaysPrecipitation());
+    pressures.add(Global.weatherData.getTodaysPressure());
+    temperatures.add(Global.weatherData.getTodaysTemperature().kelvin!);
+    humidities.add(Global.weatherData.getTodaysHumidity());
+    windSpeeds.add(Global.weatherData.getTodaysWind());
+    precipitations.add(Global.weatherData.getTodaysPrecipitation());
     // Future Predictions
-    pressures.addAll(weatherData.getUpcomingPressures());
-    temperatures.addAll(weatherData.getUpcomingTemperatures());
-    humidities.addAll(weatherData.getUpcomingHumidities());
-    windSpeeds.addAll(weatherData.getUpcomingWindSpeeds());
-    precipitations.addAll(weatherData.getUpcomingPrecipitations());
+    pressures.addAll(Global.weatherData.getUpcomingPressures());
+    temperatures.addAll(Global.weatherData.getUpcomingTemperatures());
+    humidities.addAll(Global.weatherData.getUpcomingHumidities());
+    windSpeeds.addAll(Global.weatherData.getUpcomingWindSpeeds());
+    precipitations.addAll(Global.weatherData.getUpcomingPrecipitations());
 
     List<double> migraineChances = List.empty();
     List<double> pressureChangeContributions = List.empty();
