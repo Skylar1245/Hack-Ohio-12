@@ -5,11 +5,11 @@ import 'package:hackohio12/global_methods.dart';
 class WeatherAnalysis {
   static List<double> checkMigraineChances() {
     //Past data
-    List<double> pressures = Global.weatherData.getPastPressures();
-    List<double> temperatures = Global.weatherData.getPastTemperatures();
-    List<double> humidities = Global.weatherData.getPastHumidities();
-    List<double> windSpeeds = Global.weatherData.getPastWindSpeeds();
-    List<double> precipitations = Global.weatherData.getPastPrecipitations();
+    List<num> pressures = Global.weatherData.getPastPressures();
+    List<num> temperatures = Global.weatherData.getPastTemperatures();
+    List<num> humidities = Global.weatherData.getPastHumidities();
+    List<num> windSpeeds = Global.weatherData.getPastWindSpeeds();
+    List<num> precipitations = Global.weatherData.getPastPrecipitations();
     // Future Predictions
     pressures.addAll(Global.weatherData.getUpcomingPressures());
     temperatures.addAll(Global.weatherData.getUpcomingTemperatures());
@@ -24,7 +24,7 @@ class WeatherAnalysis {
     //More than 500Pa pressure drop
     for (int i = 0; i < 6; i++) {
       log("message", name: "WeatherAnalysis");
-      double pressureChange = pressures[5 + i] - pressures[4 + i];
+      num pressureChange = pressures[5 + i] - pressures[4 + i];
       if (pressureChange < -500) {
         pressureChangeContributions.add(1);
       } else if (pressureChange < 0) {
@@ -33,7 +33,7 @@ class WeatherAnalysis {
         pressureChangeContributions.add(0);
       }
 
-      double temperatureChange = temperatures[5 + i] - temperatures[4 + i];
+      num temperatureChange = temperatures[5 + i] - temperatures[4 + i];
       if (temperatureChange > 10) {
         temperatureContributions.add(1);
       } else if (temperatureChange > 0) {

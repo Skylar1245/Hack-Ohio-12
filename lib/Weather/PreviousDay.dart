@@ -22,43 +22,35 @@ class PreviousDay {
   });
 
   factory PreviousDay.fromJson(Map<String, dynamic> json) {
-    try {
-      return PreviousDay(
-        cod: json['cod'],
-        month: json['result'][0]['month'],
-        day: json['result'][0]['day'],
-        temp: json['result'][0]['temp'],
-        pressure: json['result'][0]['pressure'],
-        humidity: json['result'][0]['humidity'],
-        wind: json['result'][0]['wind'],
-        precipitation: json['result'][0]['precipitation'],
-        clouds: json['result'][0]['clouds'],
-      );
-    } catch (e) {
-      throw FormatException("Failed to load Previous Day: ${e.toString()}");
-    }
+    return PreviousDay(
+      cod: json['cod'],
+      month: json['result'][0]['month'],
+      day: json['result'][0]['day'],
+      temp: json['result'][0]['temp'],
+      pressure: json['result'][0]['pressure'],
+      humidity: json['result'][0]['humidity'],
+      wind: json['result'][0]['wind'],
+      precipitation: json['result'][0]['precipitation'],
+      clouds: json['result'][0]['clouds'],
+    );
   }
 
   static List<PreviousDay> fromJsonList(Map<String, dynamic> json) {
-    try {
-      final cod = json['cod'];
-      final result = json['result'] as List<dynamic>;
+    final cod = json['cod'];
+    final result = json['result'] as List<dynamic>;
 
-      return result.map((dayJson) {
-        return PreviousDay(
-          cod: cod,
-          month: dayJson['month'],
-          day: dayJson['day'],
-          temp: dayJson['temp'],
-          pressure: dayJson['pressure'],
-          humidity: dayJson['humidity'],
-          wind: dayJson['wind'],
-          precipitation: dayJson['precipitation'],
-          clouds: dayJson['clouds'],
-        );
-      }).toList();
-    } catch (e) {
-      throw FormatException("Failed to load Previous Days: ${e.toString()}");
-    }
+    return result.map((dayJson) {
+      return PreviousDay(
+        cod: cod,
+        month: dayJson['month'],
+        day: dayJson['day'],
+        temp: dayJson['temp'],
+        pressure: dayJson['pressure'],
+        humidity: dayJson['humidity'],
+        wind: dayJson['wind'],
+        precipitation: dayJson['precipitation'],
+        clouds: dayJson['clouds'],
+      );
+    }).toList();
   }
 }

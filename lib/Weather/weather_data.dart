@@ -67,28 +67,26 @@ class WeatherData {
   }
 
   ///Returns the upcoming 5 days of  pressures
-  List<double> getUpcomingPressures() {
-    List<double> pressures = List.empty(growable: true);
+  List<num> getUpcomingPressures() {
+    List<num> pressures = List.empty(growable: true);
     for (Weather w in _futureForecast) {
-      pressures.add(w.pressure!);
       pressures.add(w.pressure!);
     }
     return pressures;
   }
 
   ///Returns the upcoming 5 days of humidities
-  List<double> getUpcomingHumidities() {
-    List<double> humidities = List.empty(growable: true);
+  List<num> getUpcomingHumidities() {
+    List<num> humidities = List.empty(growable: true);
     for (Weather w in _futureForecast) {
-      humidities.add(w.humidity!);
       humidities.add(w.humidity!);
     }
     return humidities;
   }
 
   ///Returns the upcoming 5 days of temperatures
-  List<double> getUpcomingTemperatures() {
-    List<double> temperatures = List.empty(growable: true);
+  List<num> getUpcomingTemperatures() {
+    List<num> temperatures = List.empty(growable: true);
 
     // Sort by date, placing today first and future dates in ascending order
     _futureForecast.sort((a, b) {
@@ -104,8 +102,8 @@ class WeatherData {
   }
 
   ///Returns the upcoming 5 days of rain
-  List<double> getUpcomingPrecipitations() {
-    List<double> precipitations = List.empty(growable: true);
+  List<num> getUpcomingPrecipitations() {
+    List<num> precipitations = List.empty(growable: true);
     for (Weather w in _futureForecast) {
       if (w.rainLast3Hours == null) {
         precipitations.add(0.0);
@@ -117,8 +115,8 @@ class WeatherData {
   }
 
   ///Returns the upcoming 5 days of wind speeds
-  List<double> getUpcomingWindSpeeds() {
-    List<double> windSpeeds = List.empty(growable: true);
+  List<num> getUpcomingWindSpeeds() {
+    List<num> windSpeeds = List.empty(growable: true);
     for (Weather w in _futureForecast) {
       windSpeeds.add(w.windSpeed!);
     }
@@ -138,8 +136,8 @@ class WeatherData {
   }
 
   ///Returns the previous 5 days of pressures
-  List<double> getPastPressures() {
-    List<double> pressures = List.empty(growable: true);
+  List<num> getPastPressures() {
+    List<num> pressures = List.empty(growable: true);
     Iterable<PreviousDay> days = _pastDays.where((day) => _isPastFiveDays(day));
     for (PreviousDay day in days) {
       pressures.add(day.pressure['mean']);
@@ -148,8 +146,8 @@ class WeatherData {
   }
 
   ///Returns the previous 5 days of humidity
-  List<double> getPastHumidities() {
-    List<double> humidities = List.empty(growable: true);
+  List<num> getPastHumidities() {
+    List<num> humidities = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
       humidities.add(day.humidity['mean']);
     }
@@ -157,8 +155,8 @@ class WeatherData {
   }
 
   ///Returns the previous 5 days of temperatures
-  List<double> getPastTemperatures() {
-    List<double> temperatures = List.empty(growable: true);
+  List<num> getPastTemperatures() {
+    List<num> temperatures = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
       temperatures.add(day.temp['mean']);
     }
@@ -166,21 +164,17 @@ class WeatherData {
   }
 
   ///Returns the previous 5 days of precipitation
-  List<double> getPastPrecipitations() {
-    List<double> precipitation = List.empty(growable: true);
+  List<num> getPastPrecipitations() {
+    List<num> precipitation = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
-      if (day.precipitation['mean'] == null) {
-        precipitation.add(0.0);
-      } else {
-        precipitation.add(day.precipitation['mean']);
-      }
+      precipitation.add(day.precipitation['mean']);
     }
     return precipitation;
   }
 
   ///Returns the previous 5 days of wind speeds
-  List<double> getPastWindSpeeds() {
-    List<double> windSpeeds = List.empty(growable: true);
+  List<num> getPastWindSpeeds() {
+    List<num> windSpeeds = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
       windSpeeds.add(day.wind['mean']);
     }
