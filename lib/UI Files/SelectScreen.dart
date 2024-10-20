@@ -33,26 +33,63 @@ class _SkeletonState extends State<SelectScreen> {
                 width: Global.getWidthByPercentage(context, 90),
                 height: Global.getHeightByPercentage(context, 70),
                 child: Column(children: [
-                  CheckboxListTile(
-                      title: Text(
-                        "Migraine",
-                        style: TextStyle(color: Global.textColor(), fontSize: 20),
-                      ),
-                      value: true,
-                      onChanged: null,
-                      controlAffinity: ListTileControlAffinity.leading),
-                  CheckboxListTile(
-                      title: Text("Asthma",
-                          style: TextStyle(color: Global.textColor(), fontSize: 20)),
-                      value: true,
-                      onChanged: null,
-                      controlAffinity: ListTileControlAffinity.leading),
-                  CheckboxListTile(
-                      title: Text("Arthritis",
-                          style: TextStyle(color: Global.textColor(), fontSize: 20)),
-                      value: true,
-                      onChanged: null,
-                      controlAffinity: ListTileControlAffinity.leading)
+                  Global.divider(context),
+                  Container(
+                    width: Global.getWidthByPercentage(context, 80),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.transparent,
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 255, 255, 255))),
+                    child: CheckboxListTile(
+                        checkColor: Global.tableData(),
+                        title: Text(
+                          "Migraine",
+                          style: TextStyle(
+                              color: Global.textColor(), fontSize: 20),
+                        ),
+                        value: true,
+                        onChanged: null,
+                        controlAffinity: ListTileControlAffinity.leading),
+                  ),
+                  Global.divider(context),
+                 Container(
+                    width: Global.getWidthByPercentage(context, 80),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.transparent,
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 255, 255, 255))),
+                    child: CheckboxListTile(
+                        checkColor: Global.tableData(),
+                        title: Text(
+                          "Asthma",
+                          style: TextStyle(
+                              color: Global.textColor(), fontSize: 20),
+                        ),
+                        value: false,
+                        onChanged: null,
+                        controlAffinity: ListTileControlAffinity.leading),
+                  ),
+                  Global.divider(context),
+                  Container(
+                    width: Global.getWidthByPercentage(context, 80),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.transparent,
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 255, 255, 255))),
+                    child: CheckboxListTile(
+                        checkColor: Global.tableData(),
+                        title: Text(
+                          "Arthritis",
+                          style: TextStyle(
+                              color: Global.textColor(), fontSize: 20),
+                        ),
+                        value: true,
+                        onChanged: null,
+                        controlAffinity: ListTileControlAffinity.leading),
+                  ),
                 ]))
           ],
         ),
