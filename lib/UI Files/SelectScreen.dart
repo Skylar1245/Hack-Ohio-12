@@ -116,7 +116,8 @@ class _SkeletonState extends State<SelectScreen> {
                               controlAffinity: ListTileControlAffinity.leading),
                         ),
                         Global.divider(context),
-                        FloatingActionButton(onPressed: () {
+                        FloatingActionButton(child: Icon(Icons.arrow_back),
+                        onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(

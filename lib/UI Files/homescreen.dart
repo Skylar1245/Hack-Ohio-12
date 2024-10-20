@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hackohio12/UI%20Files/DataPage.dart';
 import 'package:hackohio12/UI%20Files/UserInput.dart';
 import 'package:hackohio12/global_methods.dart';
+import 'package:hackohio12/UserPref.dart';
 import 'package:hackohio12/UI%20Files/SelectScreen.dart';
 import 'package:intl/intl.dart';
 
@@ -15,12 +16,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+    UserPref userPref = UserPref();
   @override
   Widget build(BuildContext context) {
     Divider divider = Divider(height: 10, color: Colors.transparent);
     Divider visibleDivider = Divider(height: 10, color: Colors.white);
     Divider buttonDivider = Divider(height: 20, color: Colors.transparent);
     Divider tableDivider = Divider(height: 5, color: Colors.transparent);
+    return FutureBuilder(
+      future: userPref.update(),
+      builder: (context, snapshot){
+        if(snapshot.data == true){
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Global.appBar(),
@@ -290,6 +296,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             buttonDivider,
                             visibleDivider,
                             buttonDivider,
+                            userPref.migraine ?
                             FloatingActionButton.extended(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
@@ -322,8 +329,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(color: Global.textColor()),
                               ),
                               icon: Icon(Icons.face, color: Colors.white),
-                            ),
+                            ) : SizedBox(),
                             buttonDivider,
+                            userPref.asthma ?
                             FloatingActionButton.extended(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
@@ -356,8 +364,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: TextStyle(color: Global.textColor()),
                               ),
                               icon: Icon(Icons.air, color: Colors.white),
-                            ),
+                            ) : SizedBox(),
                             buttonDivider,
+                            userPref.arthritis ? 
                             FloatingActionButton.extended(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
@@ -391,7 +400,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               icon: Icon(Icons.waving_hand_sharp,
                                   color: Colors.white),
-                            ),
+                            ) : SizedBox(),
                             buttonDivider,
                             FloatingActionButton.extended(
                               shape: RoundedRectangleBorder(
@@ -411,7 +420,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        SelectScreen(title: 'Add'),
+                                        SelectScreen(title: 'Add Conditions'),
                                   ),
                                 );
                               },
@@ -424,5 +433,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ]))),
               divider
             ]));
-  }
+  } else {
+    return Scaffold(body: Center(child: CircularProgressIndicator()));
+  }});
+}
 }
