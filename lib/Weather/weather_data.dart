@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:hackohio12/Weather/PreviousDay.dart';
+import 'package:hackohio12/Weather/Day.dart';
 import 'package:hackohio12/permissions.dart';
 import 'package:weather/weather.dart';
 import 'package:geolocator/geolocator.dart';
@@ -22,8 +22,7 @@ class WeatherData {
   List<Weather> _futureForecast = List.empty(growable: true);
 
   ///Weather forecast from 5 days in the past
-  ///Weather forecast from 5 days in the past
-  List<PreviousDay> _pastDays = List.empty(growable: true);
+  List<Day> _pastDays = List.empty(growable: true);
 
   ///OpenWeatherMap API key obtained for free at
   ///https://openweathermap.org/price
@@ -49,20 +48,32 @@ class WeatherData {
     _futureForecast = await _weatherFactory.fiveDayForecastByLocation(
         _userLatitude, _userLongitude);
 
-    log(_futureForecast.first.date.toString(), name: "WeatherData");
-    //populate past weather
-    String url =
-        "https://history.openweathermap.org/data/2.5/aggregated/year?lat=$_userLatitude&lon=$_userLongitude&appid=$_apiKey";
+    List<int> pastDaysInEpoch = List.empty(growable: true);
+    for (int i = 1; i < 6; i++) {
+      int start = 0;
 
-    final response = await http.get(Uri.parse(url));
+      DateTime date = DateTime.now().toUtc().subtract(Duration(days: i));
+      int end = date.millisecondsSinceEpoch;
+      //log("${DateTime.fromMillisecondsSinceEpoch(end)}", name: "WeatherData");
+      pastDaysInEpoch.add(end);
 
-    log(url, name: "WeatherData");
+      String url =
+          'https://history.openweathermap.org/data/2.5/history/city?lat=$_userLatitude&lon=$_userLongitude&type=day&start=$start&end=$end&appid=$_apiKey';
 
-    if (response.statusCode == 200) {
-      _pastDays = PreviousDay.fromJsonList(
-          jsonDecode(response.body) as Map<String, dynamic>);
-    } else {
-      throw Exception("OpenWeather did not reply");
+      final response = await http.get(Uri.parse(url));
+
+      if (response.statusCode == 200) {
+        // Decode the response body into a Map<String, dynamic>
+        Map<String, dynamic> jsonResponse = jsonDecode(response.body);
+
+        // Extract the 'list' field, which should be a List<dynamic>
+        List<dynamic> dayList = jsonResponse['list'];
+
+        // Call fromJsonList with the extracted list
+        _pastDays = Day.fromJsonList(dayList);
+      } else {
+        throw Exception("OpenWeather did not reply");
+      }
     }
   }
 
@@ -124,10 +135,10 @@ class WeatherData {
   }
 
   ///utility method to get consistence across past and future
-  bool _isPastFiveDays(PreviousDay day) {
+  bool _isPastFiveDays(Day day) {
     DateTime lowerBound = DateTime.now().subtract(const Duration(days: 5));
     DateTime upperBound = DateTime.now();
-    DateTime dayDate = DateTime(DateTime.now().year, day.month, day.day);
+    DateTime dayDate = DateTime(DateTime.now().year, day.month(), day.day());
     if (dayDate.isAfter(lowerBound) && dayDate.isBefore(upperBound)) {
       return true;
     } else {
@@ -138,9 +149,9 @@ class WeatherData {
   ///Returns the previous 5 days of pressures
   List<num> getPastPressures() {
     List<num> pressures = List.empty(growable: true);
-    Iterable<PreviousDay> days = _pastDays.where((day) => _isPastFiveDays(day));
-    for (PreviousDay day in days) {
-      pressures.add(day.pressure['mean']);
+    Iterable<Day> days = _pastDays.where((day) => _isPastFiveDays(day));
+    for (Day day in days) {
+      pressures.add(day.pressure());
     }
     return pressures;
   }
@@ -148,8 +159,8 @@ class WeatherData {
   ///Returns the previous 5 days of humidity
   List<num> getPastHumidities() {
     List<num> humidities = List.empty(growable: true);
-    for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
-      humidities.add(day.humidity['mean']);
+    for (Day day in _pastDays.where((day) => _isPastFiveDays(day))) {
+      humidities.add(day.humidity());
     }
     return humidities;
   }
@@ -157,8 +168,8 @@ class WeatherData {
   ///Returns the previous 5 days of temperatures
   List<num> getPastTemperatures() {
     List<num> temperatures = List.empty(growable: true);
-    for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
-      temperatures.add(day.temp['mean']);
+    for (Day day in _pastDays.where((day) => _isPastFiveDays(day))) {
+      temperatures.add(day.temperature());
     }
     return temperatures;
   }
@@ -166,8 +177,8 @@ class WeatherData {
   ///Returns the previous 5 days of precipitation
   List<num> getPastPrecipitations() {
     List<num> precipitation = List.empty(growable: true);
-    for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
-      precipitation.add(day.precipitation['mean']);
+    for (Day day in _pastDays.where((day) => _isPastFiveDays(day))) {
+      precipitation.add(day.precipitation());
     }
     return precipitation;
   }
@@ -175,8 +186,8 @@ class WeatherData {
   ///Returns the previous 5 days of wind speeds
   List<num> getPastWindSpeeds() {
     List<num> windSpeeds = List.empty(growable: true);
-    for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
-      windSpeeds.add(day.wind['mean']);
+    for (Day day in _pastDays.where((day) => _isPastFiveDays(day))) {
+      windSpeeds.add(day.wind());
     }
     return windSpeeds;
   }
