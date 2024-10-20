@@ -85,6 +85,9 @@ class WeatherData {
 
   ///Returns the current precipitation at time of call
   double getTodaysPrecipitation() {
+    if (weather.rainLast3Hours == null) {
+      return 0.0;
+    }
     return weather.rainLast3Hours!;
   }
 
@@ -124,7 +127,11 @@ class WeatherData {
   List<double> getUpcomingPrecipitations() {
     List<double> precipitations = List.empty(growable: true);
     for (Weather w in _futureForecast) {
-      precipitations.add(w.rainLast3Hours!);
+      if (w.rainLast3Hours == null) {
+        precipitations.add(0.0);
+      } else {
+        precipitations.add(w.rainLast3Hours!);
+      }
     }
     return precipitations;
   }
@@ -195,7 +202,11 @@ class WeatherData {
   List<double> getPastPrecipitations() {
     List<double> precipitation = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
-      precipitation.add(day.precipitation['mean']);
+      if (day.precipitation['mean'] == null) {
+        precipitation.add(0.0);
+      } else {
+        precipitation.add(day.precipitation['mean']);
+      }
     }
     return precipitation;
   }
