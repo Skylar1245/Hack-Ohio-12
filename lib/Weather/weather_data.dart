@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:hackohio12/Weather/Day.dart';
 import 'package:hackohio12/Weather/weather_analysis.dart';
@@ -91,6 +92,31 @@ class WeatherData {
     } else {
       throw Exception("OpenWeather did not reply");
     }
+
+    //test new future fetch
+
+    String futureUrl =
+        'https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=$_userLatitude&lon=$_userLongitude&appid=$_apiKey';
+
+    final futureResponse = await http.get(Uri.parse(futureUrl));
+
+    log(futureUrl, name: "WeatherData");
+
+    if (futureResponse.statusCode == 200) {
+      // Decode the response body into a Map<String, dynamic>
+      Map<String, dynamic> jsonResponse = jsonDecode(futureResponse.body);
+
+      // Extract the 'list' field, which should be a List<dynamic>
+      List<dynamic> dayList = jsonResponse['list'];
+
+      // Call fromJsonList with the extracted list
+      List<Day> futures = Day.fromJsonList(dayList);
+      log(futures.length.toString(), name: "WeatherData");
+      log(_pastDays.length.toString(), name: "WeatherData");
+    } else {
+      throw Exception("OpenWeather did not reply");
+    }
+
     WeatherAnalysis.initialize();
   }
 

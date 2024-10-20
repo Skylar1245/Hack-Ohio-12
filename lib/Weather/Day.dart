@@ -27,20 +27,29 @@ class Day {
     return d;
   }
 
-  static bool matchesHour(Day day) {
+  static List<Day> matchesHour(List<Day> list) {
     DateTime now = DateTime.now();
     int hour = now.hour;
     if (now.minute > 30) {
       hour++;
     }
-    return DateTime.fromMillisecondsSinceEpoch(day.dt).hour == hour;
+    List<Day> filtered = List.empty(growable: true);
+    for (Day day in list) {
+      int dayDtHour =
+          DateTime.fromMillisecondsSinceEpoch(day.dt * 1000, isUtc: true)
+              .hour;
+      if (dayDtHour == hour) {
+        filtered.add(day);
+      }
+    }
+    return filtered;
   }
 
   // Method to create a list of Day objects from a list of JSON data
   static List<Day> fromJsonList(List<dynamic> jsonList) {
     List<Day> list = jsonList.map((json) => Day.fromJson(json)).toList();
 
-    List<Day> filteredList = list.where(matchesHour).toList();
+    List<Day> filteredList = matchesHour(list);
     // Sort the filtered list by date (oldest first)
     filteredList.sort((a, b) => DateTime.fromMillisecondsSinceEpoch(a.dt)
         .compareTo(DateTime.fromMillisecondsSinceEpoch(b.dt)));
