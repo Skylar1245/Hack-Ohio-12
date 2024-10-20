@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackohio12/Weather/weather_analysis.dart';
 import 'package:hackohio12/Weather/weather_data.dart';
 
 enum MedicalCondition {
@@ -74,7 +75,8 @@ class Global {
   static int percent(MedicalCondition medicalCond) {
     switch (medicalCond) {
       case MedicalCondition.migraine:
-        return 10;
+        List<double> migraineList = WeatherAnalysis.checkMigraineChances();
+        return migraineList[0].toInt();
       case MedicalCondition.asthma:
         return 20;
       case MedicalCondition.arthritis:
@@ -84,10 +86,22 @@ class Global {
     }
   }
 
+  static String evalMigraine() {
+    int x = percent(MedicalCondition.migraine);
+
+    if (x < 25) {
+      return "There is a low risk for migraines today based on weather patterns. However, migraines can be caused by all sorts of factors. To best prevent a migraine, be sure to get an appropriate amount of rest, stay hydrated, and limit screen time.";
+    } else if (x >= 25 && x < 75) {
+      return "There is a medium risk for migraines today based on weather patterns. Make sure to stay hydrated and carry any helpful pain-relievers with you, including medications, cold compresses, or essential oils.";
+    } else {
+      return "There is a high risk for migraines today based on weather patterns. In the event of a migraine, be sure to take any prescribed medications in a timely manner. In addition, a dark environment, cold compress, and some essential oils can help to relieve pain.";
+    }
+  }
+
   static String description(MedicalCondition medicalCond) {
     switch (medicalCond) {
       case MedicalCondition.migraine:
-        return "info about migraines";
+        return evalMigraine();
       case MedicalCondition.asthma:
         return "info about asthma";
       case MedicalCondition.arthritis:

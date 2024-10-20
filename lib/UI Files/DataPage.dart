@@ -47,7 +47,7 @@ class _SkeletonState extends State<DataPage> {
                       FittedBox(
                         fit: BoxFit.fitWidth,
                         child: Text(
-                            "Today's Chances of Flare Up:", //words too close to left FIXME
+                            " Today's Chances of Flare Up: ", //words too close to left FIXME
                             style: TextStyle(
                                 color: Global.textColor(), fontSize: 18)),
                       ),
@@ -98,11 +98,17 @@ class _SkeletonState extends State<DataPage> {
                           alignment: Alignment.topLeft,
                           child: Row(children: [
                             VerticalDivider(width: 15),
-                            Text(widget.description,
+                            Flexible(
+                              child: Text(
+                                widget.description,
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Global.textColor(),
-                                ))
+                                ),
+                                softWrap: true,
+                                overflow: TextOverflow.visible,
+                              ),
+                            ),
                           ])),
                     ])),
             Global.divider(context),
