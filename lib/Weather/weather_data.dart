@@ -215,7 +215,11 @@ class WeatherData {
   List<double> getPastWindSpeeds() {
     List<double> windSpeeds = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
-      windSpeeds.add(day.wind['mean']);
+      try {
+        windSpeeds.add(day.wind['mean']);
+      } catch (e) {
+        windSpeeds.add(2.0);
+      }
     }
     return windSpeeds;
   }
