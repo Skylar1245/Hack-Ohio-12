@@ -5,11 +5,13 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 class Graph extends StatefulWidget {
   const Graph({super.key, required this.flareUpChance});
 
+  // Input the chance of flare-up into the widget
   final List<double> flareUpChance;
   @override
   State<Graph> createState() => _GraphState();
 }
 
+// Widget class to plot the change of flare-up data
 class _GraphState extends State<Graph> {
   int i = 0;
   @override
