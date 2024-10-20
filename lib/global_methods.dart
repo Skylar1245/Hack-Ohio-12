@@ -74,11 +74,11 @@ class Global {
         List<double> migraineList = WeatherAnalysis.checkMigraineChances();
         return migraineList[0].toInt();
       case MedicalCondition.asthma:
-        List<double> asthmaList = WeatherAnalysis.checkMigraineChances();
-        return asthmaList[0].toInt(); //FIXME
+        List<double> asthmaList = WeatherAnalysis.getAsthmaChances();
+        return asthmaList[0].toInt();
       case MedicalCondition.arthritis:
-        List<double> arthritisList = WeatherAnalysis.checkMigraineChances();
-        return arthritisList[0].toInt(); //FIXME
+        List<double> arthritisList = WeatherAnalysis.getArthritisChances();
+        return arthritisList[0].toInt();
       default:
         return 0;
     }

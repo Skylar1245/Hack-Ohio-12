@@ -1,15 +1,19 @@
 {
     "cSpell.words": [
         "calctime",
+        "cloudyweather",
         "Cond",
         "fixnum",
         "homescreen",
         "medicalbase",
         "Medicalbaseclass",
         "pubspec",
+        "rainyweather",
+        "snowyweather",
         "sprintf",
         "sublist",
         "sunnyweather",
-        "syncfusion"
+        "syncfusion",
+        "windyweather"
     ]
 }

@@ -19,6 +19,16 @@ class DataPage extends StatefulWidget {
 }
 
 class _SkeletonState extends State<DataPage> {
+  Graph chooseGraph() {
+    if (widget.title.contains("Migraine")) {
+      return Graph(flareUpChance: WeatherAnalysis.checkMigraineChances());
+    } else if (widget.title.contains("Arthritis")) {
+      return Graph(flareUpChance: WeatherAnalysis.getArthritisChances());
+    } else {
+      return Graph(flareUpChance: WeatherAnalysis.getAsthmaChances());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Decoration decoration = BoxDecoration(
@@ -71,9 +81,7 @@ class _SkeletonState extends State<DataPage> {
                         alignment: Alignment.center,
                         width: Global.getWidthByPercentage(context, 80),
                         height: Global.getHeightByPercentage(context, 30),
-                        child: Graph(
-                            flareUpChance:
-                                WeatherAnalysis.checkMigraineChances()),
+                        child: chooseGraph(),
                       )),
                 ],
               ),
