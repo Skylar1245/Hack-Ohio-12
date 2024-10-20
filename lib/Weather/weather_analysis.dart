@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:hackohio12/global_methods.dart';
 
 class WeatherAnalysis {
@@ -27,6 +29,7 @@ class WeatherAnalysis {
     List<double> humidityContributions = List.empty(growable: true);
     //More than 500Pa pressure drop
     for (int i = 0; i < 6; i++) {
+      log("message", name: "WeatherAnalysis");
       double pressureChange = pressures[5 + i] - pressures[4 + i];
       if (pressureChange < -500) {
         pressureChangeContributions.add(1);
@@ -54,7 +57,7 @@ class WeatherAnalysis {
         humidityContributions.add(0);
       }
 
-      migraineChances.add(0.62 * pressureChangeContributions[i] +
+      migraineChances.add(100*0.62 * pressureChangeContributions[i] +
           0.1 * temperatureContributions[i] +
           0.28 * humidityContributions[i]);
     }
