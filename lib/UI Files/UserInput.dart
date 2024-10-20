@@ -241,7 +241,9 @@ class _SkeletonState extends State<UserInput> {
                                           : SizedBox(),
                                       userPref.migraine
                                           ? Text(
-                                              userPref.migraineCount.toString())
+                                              userPref.migraineCount.toString(), style: TextStyle(
+                                                color: Global.textColor()
+                                              ))
                                           : SizedBox()
                                     ]),
                                     Divider(
@@ -256,7 +258,8 @@ class _SkeletonState extends State<UserInput> {
                                           : SizedBox(),
                                       userPref.asthma
                                           ? Text(
-                                              userPref.asthmaCount.toString())
+                                              userPref.asthmaCount.toString(), style: TextStyle(
+                                                color: Global.textColor()))
                                           : SizedBox()
                                     ]),
                                     Divider(
@@ -271,7 +274,8 @@ class _SkeletonState extends State<UserInput> {
                                           : SizedBox(),
                                       userPref.arthritis
                                           ? Text(userPref.arthritisCount
-                                              .toString())
+                                              .toString(), style: TextStyle(
+                                                color: Global.textColor()))
                                           : SizedBox()
                                     ])
                                   ])))
