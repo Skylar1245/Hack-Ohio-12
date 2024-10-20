@@ -44,7 +44,7 @@ class _SkeletonState extends State<DataPage> {
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text("Chances of Flare Up:",
+                      Text("Today's Chances of Flare Up:",
                           style: TextStyle(
                               color: Global.textColor(), fontSize: 20)),
                       Text("${widget.percent}%",
