@@ -23,9 +23,11 @@ class MyApp extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.data == true) {
                 return const HomeScreen(title: 'Home Screen');
-              } else {
+              } else if (!snapshot.hasData && !snapshot.hasError) {
                 return const Scaffold(
                     body: Center(child: CircularProgressIndicator()));
+              } else {
+                throw Error();
               }
             }));
   }
