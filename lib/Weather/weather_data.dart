@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:hackohio12/Weather/Day.dart';
 import 'package:hackohio12/permissions.dart';
@@ -12,6 +11,9 @@ import 'package:http/http.dart' as http;
 class WeatherData {
   ///Private [WeatherFactory] to read from
   final WeatherFactory _weatherFactory;
+
+  ///Location String
+  String? _location;
 
   ///User Latitude
   double _userLatitude = 0;
@@ -75,6 +77,23 @@ class WeatherData {
         throw Exception("OpenWeather did not reply");
       }
     }
+    int limit = 1;
+    String geoUrl =
+        'http://api.openweathermap.org/geo/1.0/reverse?lat=$_userLatitude&lon=$_userLongitude&limit=$limit&appid=$_apiKey';
+    final geoResponse = await http.get(Uri.parse(geoUrl));
+
+    if (geoResponse.statusCode == 200) {
+      // Decode the response body into a Map<String, dynamic>
+      List<dynamic> jsonResponse = jsonDecode(geoResponse.body);
+
+      _location = jsonResponse.first["name"] ?? ":(";
+    } else {
+      throw Exception("OpenWeather did not reply");
+    }
+  }
+
+  String getLocation() {
+    return _location!;
   }
 
   ///Returns the upcoming 5 days of  pressures

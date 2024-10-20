@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     tableDivider,
                     Text(
-                      Global.userLocation(),
+                      Global.weatherData.getLocation(),
                       style: TextStyle(color: Global.textColor()),
                     ),
                     divider,
