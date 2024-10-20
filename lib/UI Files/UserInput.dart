@@ -203,8 +203,6 @@ class _SkeletonState extends State<UserInput> {
                                             child: Icon(Icons.check),
                                             onPressed: () {
                                               state("clear");
-                                              int x = userPref.arthritisCount;
-                                              log("$x", name: "message");
                                             })
                                       ],
                                     ))),
