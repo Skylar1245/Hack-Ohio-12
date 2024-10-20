@@ -80,7 +80,7 @@ class _SkeletonState extends State<UserInput> {
                                       border:
                                           Border.all(color: Global.textColor()),
                                     ),
-                                    child: Column(
+                                    child: SingleChildScrollView(child: Column(
                                       children: [
                                         Text(
                                           "\nWhich conditions have you had flare-ups of today?",
@@ -200,7 +200,7 @@ class _SkeletonState extends State<UserInput> {
                                               state("clear");
                                             })
                                       ],
-                                    ))),
+                                    )))),
                           ],
                         )),
                     Global.divider(context),
