@@ -9,6 +9,10 @@ class UserPref {
   int asthmaCount = 0;
   int arthritisCount = 0;
 
+  bool migraineCountToggle = false;
+  bool asthmaCountToggle = false;
+  bool arthritisCountToggle = false;
+
   Future<bool> update() async {
     migraine = await getMigraine();
     asthma = await getAsthma();
@@ -31,6 +35,10 @@ class UserPref {
     } else {
       arthritisCount = 0;
     }
+
+    migraineCountToggle = await getMigraineCountToggle();
+    asthmaCountToggle = await getAsthmaCountToggle();
+    arthritisCountToggle = await getArthritisCountToggle();
 
     return true;
   }
@@ -60,6 +68,18 @@ class UserPref {
     return preferences.getInt('migraineCount') ?? 0;
   }
 
+  Future<void> setMigraineCountToggle(bool migraine) async {
+    final preferences = await SharedPreferences.getInstance();
+
+    await preferences.setBool('migraineCountToggle', migraine);
+  }
+
+  Future<bool> getMigraineCountToggle() async {
+    final preferences = await SharedPreferences.getInstance();
+
+    return preferences.getBool('migraineCountToggle') ?? false;
+  }
+
 //asthma
   Future<void> setAsthma(bool asthma) async {
     final preferences = await SharedPreferences.getInstance();
@@ -85,6 +105,18 @@ class UserPref {
     return preferences.getInt('asthmaCount') ?? 0;
   }
 
+  Future<void> setAsthmaCountToggle(bool asthma) async {
+    final preferences = await SharedPreferences.getInstance();
+
+    await preferences.setBool('asthmaCountToggle', asthma);
+  }
+
+  Future<bool> getAsthmaCountToggle() async {
+    final preferences = await SharedPreferences.getInstance();
+
+    return preferences.getBool('asthmaCountToggle') ?? false;
+  }
+
 //arthritis
   Future<void> setArthritis(bool arthritis) async {
     final preferences = await SharedPreferences.getInstance();
@@ -108,5 +140,17 @@ class UserPref {
     final preferences = await SharedPreferences.getInstance();
 
     return preferences.getInt('arthritisCount') ?? 0;
+  }
+
+  Future<void> setArthritisCountToggle(bool arthritis) async {
+    final preferences = await SharedPreferences.getInstance();
+
+    await preferences.setBool('arthritisCountToggle', arthritis);
+  }
+
+  Future<bool> getArthritisCountToggle() async {
+    final preferences = await SharedPreferences.getInstance();
+
+    return preferences.getBool('arthritisCountToggle') ?? false;
   }
 }
