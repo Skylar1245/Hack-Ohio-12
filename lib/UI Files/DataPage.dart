@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hackohio12/UI%20Files/graph.dart';
+import 'package:hackohio12/Weather/weather_analysis.dart';
 import 'package:hackohio12/global_methods.dart';
 
 class DataPage extends StatefulWidget {
@@ -54,7 +56,7 @@ class _SkeletonState extends State<DataPage> {
                 alignment: Alignment.center,
                 width: Global.getWidthByPercentage(context, 90),
                 height: Global.getHeightByPercentage(context, 60),
-                child: Text("graph")),
+                child: Graph(flareUpChance: WeatherAnalysis.checkMigraineChances())),
             Global.divider(context),
             Container(
                 decoration: decoration,

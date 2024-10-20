@@ -3,7 +3,7 @@ import 'package:hackohio12/global_methods.dart';
 import 'package:weather/weather.dart';
 
 class WeatherAnalysis {
-  List<double> checkMigraineToday() {
+  static List<double> checkMigraineChances() {
     /*
     //Past data
     List<double> pastFiveDayPressureData = Global.weatherData.getPastPressures();
