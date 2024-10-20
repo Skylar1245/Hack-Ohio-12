@@ -44,30 +44,37 @@ class _SkeletonState extends State<DataPage> {
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text("Today's Chances of Flare Up:",
-                          style: TextStyle(
-                              color: Global.textColor(), fontSize: 20)),
-                      Text("${widget.percent}%",
-                          style: TextStyle(
-                              color: Global.textColor(), fontSize: 50))
+                      FittedBox(
+                        fit: BoxFit.fitWidth,
+                        child: Text(
+                            " Today's Chances of Flare Up: ", //words too close to left FIXME
+                            style: TextStyle(
+                                color: Global.textColor(), fontSize: 18)),
+                      ),
+                      Expanded(
+                          child: Text("${widget.percent}%",
+                              style: TextStyle(
+                                  color: Global.textColor(), fontSize: 40)))
                     ])),
             Global.divider(context),
             Container(
               decoration: decoration,
               alignment: Alignment.center,
               width: Global.getWidthByPercentage(context, 90),
-              height: Global.getHeightByPercentage(context, 60),
+              height: Global.getHeightByPercentage(context, 40),
               child: Column(
                 children: [
-                  Container(
-                    width: Global.getWidthByPercentage(context, 80),
-                          height: Global.getHeightByPercentage(context, 30),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: Global.textColor())
-                  )
-                  ,child: Graph(flareUpChance: WeatherAnalysis.checkMigraineChances()),
-                  )
+                  Global.divider(context),
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: Global.getWidthByPercentage(context, 80),
+                        height: Global.getHeightByPercentage(context, 30),
+                        child: Graph(
+                            flareUpChance:
+                                WeatherAnalysis.checkMigraineChances()),
+                      )),
                 ],
               ),
             ),
@@ -91,11 +98,17 @@ class _SkeletonState extends State<DataPage> {
                           alignment: Alignment.topLeft,
                           child: Row(children: [
                             VerticalDivider(width: 15),
-                            Text(widget.description,
+                            Flexible(
+                              child: Text(
+                                widget.description,
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Global.textColor(),
-                                ))
+                                ),
+                                softWrap: true,
+                                overflow: TextOverflow.visible,
+                              ),
+                            ),
                           ])),
                     ])),
             Global.divider(context),
