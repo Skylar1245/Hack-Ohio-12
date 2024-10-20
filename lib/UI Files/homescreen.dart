@@ -4,7 +4,6 @@ import 'package:hackohio12/UI%20Files/UserInput.dart';
 import 'package:hackohio12/global_methods.dart';
 import 'package:hackohio12/UI%20Files/SelectScreen.dart';
 import 'package:intl/intl.dart';
-import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.title});
@@ -47,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         SizedBox(
                             width: Global.getWidthByPercentage(context, 10)),
                         Image.asset('assets/sunnyweather.png'),
+                        //!
                         SizedBox(
                           width: Global.getWidthByPercentage(context, 20),
                         ),
@@ -55,11 +55,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             style: TextStyle(
                                 fontSize: 50, color: Global.textColor())),
                       ],
-                    ),
-                    tableDivider,
-                    Text(
-                      Global.userLocation(),
-                      style: TextStyle(color: Global.textColor()),
                     ),
                     tableDivider,
                     Text(
@@ -89,10 +84,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     DateFormat('EEEE')
                                         .format(DateTime.now())
                                         .substring(0, 3),
-                                child: Text(
-                                    DateFormat('EEEE')
-                                        .format(DateTime.now())
-                                        .substring(0, 3),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(color: Colors.black)),
                               ),
@@ -106,11 +97,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .format(DateTime.now()
                                             .add(const Duration(days: 1)))
                                         .substring(0, 3),
-                                child: Text(
-                                    DateFormat('EEEE')
-                                        .format(DateTime.now()
-                                            .add(const Duration(days: 1)))
-                                        .substring(0, 3),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(color: Colors.black)),
                               ),
@@ -122,22 +108,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                         .format(DateTime.now()
                                             .add(const Duration(days: 2)))
                                         .substring(0, 3),
-                                child: Text(
-                                    DateFormat('EEEE')
-                                        .format(DateTime.now()
-                                            .add(const Duration(days: 2)))
-                                        .substring(0, 3),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(color: Colors.black)),
                               ),
                               Container(
                                 height: 20,
                                 color: Global.tableHeader(),
-                                child: Text(
-                                    DateFormat('EEEE')
-                                        .format(DateTime.now()
-                                            .add(const Duration(days: 3)))
-                                        .substring(0, 3),
                                 child: Text(
                                     DateFormat('EEEE')
                                         .format(DateTime.now()
@@ -153,11 +129,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       topRight: Radius.circular(20),
                                     )),
                                 height: 20,
-                                child: Text(
-                                    DateFormat('EEEE')
-                                        .format(DateTime.now()
-                                            .add(const Duration(days: 4)))
-                                        .substring(0, 3),
                                 child: Text(
                                     DateFormat('EEEE')
                                         .format(DateTime.now()
@@ -342,10 +313,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                           MedicalCondition.migraine),
                                       description: Global.description(
                                           MedicalCondition.migraine),
-                                      percent: Global.percent(
-                                          MedicalCondition.migraine),
-                                      description: Global.description(
-                                          MedicalCondition.migraine),
                                     ),
                                   ),
                                 );
@@ -376,10 +343,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                   MaterialPageRoute(
                                     builder: (context) => DataPage(
                                       title: 'Asthma',
-                                      percent: Global.percent(
-                                          MedicalCondition.asthma),
-                                      description: Global.description(
-                                          MedicalCondition.asthma),
                                       percent: Global.percent(
                                           MedicalCondition.asthma),
                                       description: Global.description(
@@ -418,10 +381,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                           MedicalCondition.arthritis),
                                       description: Global.description(
                                           MedicalCondition.arthritis),
-                                      percent: Global.percent(
-                                          MedicalCondition.arthritis),
-                                      description: Global.description(
-                                          MedicalCondition.arthritis),
                                     ),
                                   ),
                                 );
@@ -432,8 +391,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               icon: Icon(Icons.waving_hand_sharp,
                                   color: Colors.white),
-                            ),
-                            buttonDivider,
                             ),
                             buttonDivider,
                             FloatingActionButton.extended(
@@ -447,16 +404,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               backgroundColor: Global
                                   .tableData(), // Make FAB background transparent
-                              backgroundColor: Global
-                                  .tableData(), // Make FAB background transparent
                               elevation: 0, // Remove shadow
                               heroTag: "4",
                               onPressed: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        SelectScreen(title: 'Add'),
                                     builder: (context) =>
                                         SelectScreen(title: 'Add'),
                                   ),
@@ -466,7 +419,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 'Add Condition',
                                 style: TextStyle(color: Global.textColor()),
                               ),
-                              icon: Icon(Icons.add, color: Colors.white),
                               icon: Icon(Icons.add, color: Colors.white),
                             )
                           ]))),
