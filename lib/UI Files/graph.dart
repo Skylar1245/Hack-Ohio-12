@@ -39,7 +39,7 @@ class _GraphState extends State<Graph> {
                         ),
                         primaryYAxis: CategoryAxis(
                             initialVisibleMinimum: 0,
-                            initialVisibleMaximum: 1,
+                            initialVisibleMaximum: 100,
                             title: AxisTitle(
                                 text: 'Chance of Flare-Up',
                                 textStyle: TextStyle(
