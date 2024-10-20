@@ -13,6 +13,7 @@ class UserInput extends StatefulWidget {
 
 class _SkeletonState extends State<UserInput> {
   UserPref userPref = UserPref();
+
   @override
   Widget build(BuildContext context) {
     Divider tempDivider = Divider(
@@ -24,7 +25,12 @@ class _SkeletonState extends State<UserInput> {
       borderRadius: BorderRadius.circular(20), // Adjust the radius as needed
     );
 
-    return Scaffold(
+    return FutureBuilder(
+      future: userPref.update(),
+      builder: (context, snapshot){
+        if(snapshot.data == true){
+      
+       return Scaffold(
       backgroundColor: Global.background(),
       appBar: AppBar(
         backgroundColor: Global.appBar(),
@@ -65,42 +71,48 @@ class _SkeletonState extends State<UserInput> {
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
-                                CheckboxListTile(
-                                    checkColor: Global.tableData(),
-                                    title: Text(
-                                      "Migraine",
-                                      style: TextStyle(
-                                          color: Global.textColor(),
-                                          fontSize: 12),
-                                    ),
-                                    value: true,
-                                    onChanged: null,
-                                    controlAffinity:
-                                        ListTileControlAffinity.leading),
-                                CheckboxListTile(
-                                    checkColor: Global.tableData(),
-                                    title: Text(
-                                      "Asthma",
-                                      style: TextStyle(
-                                          color: Global.textColor(),
-                                          fontSize: 12),
-                                    ),
-                                    value: true,
-                                    onChanged: null,
-                                    controlAffinity:
-                                        ListTileControlAffinity.leading),
-                                CheckboxListTile(
-                                    checkColor: Global.tableData(),
-                                    title: Text(
-                                      "Arthritis",
-                                      style: TextStyle(
-                                          color: Global.textColor(),
-                                          fontSize: 12),
-                                    ),
-                                    value: true,
-                                    onChanged: null,
-                                    controlAffinity:
-                                        ListTileControlAffinity.leading),
+                                userPref.migraine
+                                    ? CheckboxListTile(
+                                        checkColor: Global.tableData(),
+                                        title: Text(
+                                          "Migraine",
+                                          style: TextStyle(
+                                              color: Global.textColor(),
+                                              fontSize: 12),
+                                        ),
+                                        value: true,
+                                        onChanged: null,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading)
+                                    : SizedBox(),
+                                userPref.asthma
+                                    ? CheckboxListTile(
+                                        checkColor: Global.tableData(),
+                                        title: Text(
+                                          "Asthma",
+                                          style: TextStyle(
+                                              color: Global.textColor(),
+                                              fontSize: 12),
+                                        ),
+                                        value: true,
+                                        onChanged: null,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading)
+                                    : SizedBox(),
+                                userPref.arthritis
+                                    ? CheckboxListTile(
+                                        checkColor: Global.tableData(),
+                                        title: Text(
+                                          "Arthritis",
+                                          style: TextStyle(
+                                              color: Global.textColor(),
+                                              fontSize: 12),
+                                        ),
+                                        value: true,
+                                        onChanged: null,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading)
+                                    : SizedBox(),
                               ],
                             ))),
                   ],
@@ -132,5 +144,8 @@ class _SkeletonState extends State<UserInput> {
         ),
       ),
     );
-  }
+  } else {
+    return Scaffold(body: Center(child: CircularProgressIndicator()));
+  }});
+}
 }
