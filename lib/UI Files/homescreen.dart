@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: Global.getWidthByPercentage(context, 20),
                         ),
                         Text(
-                            '${Global.weatherData.getTodaysTemperature()?.fahrenheit?.round()}°F',
+                            '${Global.weatherData.getTodaysTemperature().fahrenheit?.round()}°F',
                             style: TextStyle(
                                 fontSize: 50, color: Global.textColor())),
                       ],
@@ -151,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   tableDivider,
                                   Text(
-                                    '${Global.weatherData.getTodaysTemperature()?.fahrenheit?.round()}°',
+                                    '${Global.weatherData.getTodaysTemperature().fahrenheit?.round()}°',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Global.textColor(),

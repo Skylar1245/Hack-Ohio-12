@@ -12,22 +12,19 @@ class Graph extends StatefulWidget {
 class _GraphState extends State<Graph> {
   int i = 0;
   @override
-    Widget build(BuildContext context) { 
-        return Scaffold(
-            body: Center(
-                child: Container(
-                    child: SfCartesianChart(
-                        series: <CartesianSeries>[
-                            // Renders line chart
-                            LineSeries<double, int>(
-                                dataSource: widget.flareUpChance,
-                                xValueMapper: (double d, int i ) {return i;},
-                                yValueMapper: (double d, int i) {return widget.flareUpChance[i];}
-                            )
-                        ]
-                    )
-                )
-            )
-        );
-    }
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Center(
+            child: SfCartesianChart(series: <CartesianSeries>[
+      // Renders line chart
+      LineSeries<double, int>(
+          dataSource: widget.flareUpChance,
+          xValueMapper: (double d, int i) {
+            return i;
+          },
+          yValueMapper: (double d, int i) {
+            return widget.flareUpChance[i];
+          })
+    ])));
+  }
 }
