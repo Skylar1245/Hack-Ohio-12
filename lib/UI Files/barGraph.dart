@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-
+/*
 class BarGraph extends StatefulWidget {
-  const BarGraph({super.key, required this.flareUpChance});
+  const BarGraph({super.key, required this.y});
 
-  final List<double> flareUpChance;
+  final List<int> y;
 
   @override
   State<BarGraph> createState() => _BarGraph();
@@ -23,16 +23,44 @@ class _BarGraph extends State<BarGraph> {
                     //borderWidth: 5,
                     series: <CartesianSeries>[
                   // Renders line chart
-                  BarSeries<double, int>(
-                      dataSource: widget.flareUpChance,
+                  BarSeries<int, int>(
+
                       color: Colors.black,
                       width: 7,
-                      xValueMapper: (double d, int i) {
+                      xValueMapper: (int s, int i) {
                         return i;
                       },
-                      yValueMapper: (double d, int i) {
-                        return widget.flareUpChance[i];
+                      yValueMapper: (int s, int i) {
+                        return widget.y[i];
                       })
                 ]))));
+  }
+}
+*/
+
+class BarGraph {
+  const BarGraph();
+
+
+  Container graph(List<int> y){
+    return Container(
+            color: Colors.yellow,
+            child: Center(
+                child: SfCartesianChart (
+                    //borderColor: Colors.purple,
+                    //borderWidth: 5,
+                    series: <CartesianSeries>[
+                  // Renders line chart
+                  BarSeries<int, int>(
+
+                      color: Colors.black,
+                      width: 7,
+                      xValueMapper: (int s, int i) {
+                        return i;
+                      },
+                      yValueMapper: (int s, int i) {
+                        return y[i];
+                      })
+                ])));
   }
 }

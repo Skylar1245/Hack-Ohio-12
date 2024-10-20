@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hackohio12/global_methods.dart';
 import 'package:hackohio12/UserPref.dart';
+import 'package:hackohio12/UI%20Files/barGraph.dart';
 
 class UserInput extends StatefulWidget {
   const UserInput({super.key, required this.title});
@@ -80,7 +81,8 @@ class _SkeletonState extends State<UserInput> {
                                       border:
                                           Border.all(color: Global.textColor()),
                                     ),
-                                    child: SingleChildScrollView(child: Column(
+                                    child: SingleChildScrollView(
+                                        child: Column(
                                       children: [
                                         Text(
                                           "\nWhich conditions have you had flare-ups of today?",
@@ -226,7 +228,53 @@ class _SkeletonState extends State<UserInput> {
                                     borderRadius: BorderRadius.circular(20),
                                     border:
                                         Border.all(color: Global.textColor()),
-                                  )))
+                                  ),
+                                  child: Column(children: [
+                                    Divider(
+                                        height: 30, color: Colors.transparent),
+                                    Row(children: [
+                                      userPref.migraine
+                                          ? Text("\tNumber of Migraines:\t\t",
+                                              style: TextStyle(
+                                                  color: Global.textColor(),
+                                                  fontSize: 15))
+                                          : SizedBox(),
+                                      userPref.migraine
+                                          ? Text(
+                                              userPref.migraineCount.toString())
+                                          : SizedBox()
+                                    ]),
+                                    Divider(
+                                        height: 30, color: Colors.transparent),
+                                    Row(children: [
+                                      userPref.asthma
+                                          ? Text(
+                                              "\tNumber of Asthma Flare-Ups:\t\t",
+                                              style: TextStyle(
+                                                  color: Global.textColor(),
+                                                  fontSize: 15))
+                                          : SizedBox(),
+                                      userPref.asthma
+                                          ? Text(
+                                              userPref.asthmaCount.toString())
+                                          : SizedBox()
+                                    ]),
+                                    Divider(
+                                        height: 30, color: Colors.transparent),
+                                    Row(children: [
+                                      userPref.arthritis
+                                          ? Text(
+                                              "\tNumber of Arthritis Flare-Ups:\t\t",
+                                              style: TextStyle(
+                                                  color: Global.textColor(),
+                                                  fontSize: 15))
+                                          : SizedBox(),
+                                      userPref.arthritis
+                                          ? Text(userPref.arthritisCount
+                                              .toString())
+                                          : SizedBox()
+                                    ])
+                                  ])))
                         ],
                       ),
                     )
