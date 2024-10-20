@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackohio12/global_methods.dart';
 import 'package:hackohio12/UserPref.dart';
-import 'dart:developer';
 
 class UserInput extends StatefulWidget {
   const UserInput({super.key, required this.title});
@@ -39,10 +38,6 @@ class _SkeletonState extends State<UserInput> {
 
   @override
   Widget build(BuildContext context) {
-    Divider tempDivider = Divider(
-      height: 5,
-      color: Colors.transparent,
-    );
     Decoration decoration = BoxDecoration(
       gradient: Global.gradient(),
       borderRadius: BorderRadius.circular(20), // Adjust the radius as needed
