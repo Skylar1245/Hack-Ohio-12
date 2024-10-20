@@ -35,19 +35,27 @@ class _SkeletonState extends State<UserInput> {
                 child: Column(
                   children: [
                     Divider(height: 10, color: Colors.transparent),
-                    Text("Input Today's Data", style: TextStyle(
-                              color: Global.textColor(), fontSize: 24)),
-                              Divider(height: 5, color: Colors.transparent),
-                              Align(
-                          alignment: Alignment.topLeft,
-                          child: Row(children: [
-                            VerticalDivider(width: Global.getWidthByPercentage(context, 3)),
-                            Text("Which conditions have you had flare-ups of today?",
+                    Text("Input Today's Data",
+                        style:
+                            TextStyle(color: Global.textColor(), fontSize: 24)),
+                    Divider(height: 5, color: Colors.transparent),
+                    Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                            width: Global.getWidthByPercentage(context, 80),
+                            height: Global.getHeightByPercentage(context, 25),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Global.textColor()),
+                            ),
+                            child: Text(
+                                "\nWhich conditions have you had flare-ups of today?",
                                 style: TextStyle(
-                                  fontSize: Global.getWidthByPercentage(context, 3),
+                                  
+                                  fontSize:
+                                      Global.getWidthByPercentage(context, 3),
                                   color: Global.textColor(),
-                                ))
-                          ]))
+                                ), textAlign: TextAlign.center,))),
                   ],
                 )),
             Global.divider(context),
