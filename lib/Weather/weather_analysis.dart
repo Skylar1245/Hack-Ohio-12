@@ -72,6 +72,7 @@ class WeatherAnalysis {
     List<double> asthmaChances = List.empty(growable: true);
     double temperatureContribution = 0;
     double humidityContribution = 0;
+    double windSpeedContribution = 0;
 
     for (int i = 0; i < 6; i++) {
       log("Temperature Day ${5 + i} ${temperatures[5 + i]} and Day ${4 + i} ${temperatures[4 + i]}",
@@ -97,9 +98,20 @@ class WeatherAnalysis {
       }
       log("Humidity contribution $humidityContribution",
           name: "WeatherAnalysis");
+      
+      log("Wind Speed Day ${5 + i} ${windSpeeds[5 + i]} and Day ${4 + i} ${windSpeeds[4 + i]}",
+          name: "WeatherAnalysis");
+      if (windSpeeds[i+5]>30){
+        windSpeedContribution = 1;
+      } else if (windSpeeds[i+5] > 15) {
+        windSpeedContribution = (windSpeeds[i+5] - 15)/15;
+      }
+      log("Wind Speed contribution $windSpeedContribution",
+          name: "WeatherAnalysis");
 
       asthmaChances.add(100 * (0.5 * temperatureContribution +
-          0.5 * humidityContribution));
+          0.5 * humidityContribution) + 
+          0.1 * windSpeedContribution);
       log("asthma chance: ${asthmaChances[i]}", name: "WeatherAnalysis");
     }
 
