@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackohio12/global_methods.dart';
+import 'package:hackohio12/UserPref.dart';
 
 class UserInput extends StatefulWidget {
   const UserInput({super.key, required this.title});
@@ -11,6 +12,7 @@ class UserInput extends StatefulWidget {
 }
 
 class _SkeletonState extends State<UserInput> {
+  UserPref userPref = UserPref();
   @override
   Widget build(BuildContext context) {
     Divider tempDivider = Divider(
