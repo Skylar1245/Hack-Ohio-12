@@ -35,8 +35,9 @@ class WeatherData {
   WeatherData() : _weatherFactory = WeatherFactory(_apiKey);
 
   ///Fills all data fields of the [WeatherData]
-  Future<void> initialize() async {
+  Future<bool> initialize() async {
     await _populateFields();
+    return true;
   }
 
   ///Updates this class's user location members
@@ -66,9 +67,6 @@ class WeatherData {
       throw Exception("OpenWeather did not reply");
     }
   }
-
-  ///Constructor
-  WeatherData() : _weatherFactory = WeatherFactory(_apiKey);
 
   ///Returns the current pressure at time of call
   double getTodaysPressure() {
@@ -153,7 +151,7 @@ class WeatherData {
   }
 
   ///Used to standardize lists
-  int _SortMostRecentFirst(PreviousDay day1, PreviousDay day2) {
+  int _sortMostRecentFirst(PreviousDay day1, PreviousDay day2) {
     DateTime date1 = DateTime(DateTime.now().year, day1.month, day1.day);
     DateTime date2 = DateTime(DateTime.now().year, day2.month, day2.day);
     if (date1.isAfter(date2)) {
