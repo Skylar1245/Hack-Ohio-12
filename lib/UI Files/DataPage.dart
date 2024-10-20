@@ -48,7 +48,8 @@ class _SkeletonState extends State<DataPage> {
                           style: TextStyle(
                               color: Global.textColor(), fontSize: 20)),
                       Text("${widget.percent}%",
-                          style: TextStyle(color: Global.textColor(), fontSize: 50))
+                          style: TextStyle(
+                              color: Global.textColor(), fontSize: 50))
                     ])),
             Global.divider(context),
             Container(
@@ -83,7 +84,8 @@ class _SkeletonState extends State<DataPage> {
                                   color: Global.textColor(),
                                 ))
                           ])),
-                    ]))
+                    ])),
+            Global.divider(context),
           ],
         ),
       ),
