@@ -59,7 +59,7 @@ class _SkeletonState extends State<DataPage> {
                         child: Text(
                             " Today's Chances of Flare Up: ", //words too close to left FIXME
                             style: TextStyle(
-                                color: Global.textColor(), fontSize: 18)),
+                                color: Global.textColor(), fontSize: 16)),
                       ),
                       Expanded(
                           child: Text("${widget.percent}%",
