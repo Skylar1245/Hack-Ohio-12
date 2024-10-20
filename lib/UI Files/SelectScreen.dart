@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackohio12/global_methods.dart';
+import 'package:hackohio12/UI%20Files/homescreen.dart';
 
 class SelectScreen extends StatefulWidget {
   const SelectScreen({super.key, required this.title});
@@ -90,6 +91,16 @@ class _SkeletonState extends State<SelectScreen> {
                         onChanged: null,
                         controlAffinity: ListTileControlAffinity.leading),
                   ),
+                  Global.divider(context),
+                  FloatingActionButton(onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        HomeScreen(title: 'Home Screen'),
+                                  ),
+                                );
+                              })
                 ]))
           ],
         ),

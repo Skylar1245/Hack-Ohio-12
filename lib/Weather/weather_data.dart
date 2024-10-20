@@ -24,12 +24,21 @@ class WeatherData {
   ///Weather forecast of 5 days
   List<Weather> _futureForecast = List.empty(growable: true);
 
-  ///
+  ///Weather forecast from 5 days in the past
   List<PreviousDay> _pastDays = List.empty(growable: true);
 
   ///OpenWeatherMap API key obtained for free at
   ///https://openweathermap.org/price
   static final String _apiKey = "6bc5a74652a7e36c118775e11f341534";
+
+  ///Constructor
+  WeatherData() : _weatherFactory = WeatherFactory(_apiKey);
+
+  ///Fills all data fields of the [WeatherData]
+  Future<bool> initialize() async {
+    await _populateFields();
+    return true;
+  }
 
   ///Updates this class's user location members
   Future<void> _populateFields() async {
@@ -59,56 +68,84 @@ class WeatherData {
     }
   }
 
-  Future<bool> initialize() async {
-    await _populateFields();
-    return true;
-  }
-
-  ///Constructor
-  WeatherData() : _weatherFactory = WeatherFactory(_apiKey);
-
   ///Returns the current pressure at time of call
-  double? getTodaysPressure() {
-    return weather.pressure;
+  double getTodaysPressure() {
+    return weather.pressure!;
   }
 
   ///Returns the current humidity at time of call
-  double? getTodaysHumidity() {
-    return weather.humidity;
+  double getTodaysHumidity() {
+    return weather.humidity!;
   }
 
   ///Returns the current temperature at time of call
-  Temperature? getTodaysTemperature() {
-    return weather.temperature;
+  Temperature getTodaysTemperature() {
+    return weather.temperature!;
   }
 
-  ///Returns the upcoming 5 days of nullable pressures
-  List<double?> getFiveDayPressure() {
-    List<double?> pressures = List.empty(growable: true);
+  ///Returns the current precipitation at time of call
+  double getTodaysPrecipitation() {
+    if (weather.rainLast3Hours == null) {
+      return 0.0;
+    }
+    return weather.rainLast3Hours!;
+  }
+
+  ///Returns the current wind speed at time of call
+  double getTodaysWind() {
+    return weather.windSpeed!;
+  }
+
+  ///Returns the upcoming 5 days of  pressures
+  List<double> getUpcomingPressures() {
+    List<double> pressures = List.empty(growable: true);
     for (Weather w in _futureForecast) {
-      pressures.add(w.pressure);
+      pressures.add(w.pressure!);
     }
     return pressures;
   }
 
-  ///Returns the upcoming 5 days of nullable humidities
-  List<double?> getFiveDayHumidity() {
-    List<double?> humidities = List.empty(growable: true);
+  ///Returns the upcoming 5 days of humidities
+  List<double> getUpcomingHumidities() {
+    List<double> humidities = List.empty(growable: true);
     for (Weather w in _futureForecast) {
-      humidities.add(w.humidity);
+      humidities.add(w.humidity!);
     }
     return humidities;
   }
 
-  ///Returns the upcoming 5 days of nullable temperatures
-  List<double?> getFiveDayTemperature() {
-    List<double?> humidities = List.empty(growable: true);
+  ///Returns the upcoming 5 days of temperatures
+  List<double> getUpcomingTemperatures() {
+    List<double> humidities = List.empty(growable: true);
     for (Weather w in _futureForecast) {
-      humidities.add(w.humidity);
+      humidities.add(w.humidity!);
     }
     return humidities;
   }
 
+  ///Returns the upcoming 5 days of rain
+  List<double> getUpcomingPrecipitations() {
+    List<double> precipitations = List.empty(growable: true);
+    for (Weather w in _futureForecast) {
+      if (w.rainLast3Hours == null) {
+        precipitations.add(0.0);
+      } else {
+        precipitations.add(w.rainLast3Hours!);
+      }
+    }
+    return precipitations;
+  }
+
+  ///Returns the upcoming 5 days of wind speeds
+  List<double> getUpcomingWindSpeeds() {
+    List<double> windSpeeds = List.empty(growable: true);
+    for (Weather w in _futureForecast) {
+      windSpeeds.add(w.windSpeed!);
+    }
+    return windSpeeds;
+  }
+
+  ///utility method to get consistence across past and future
   bool _isPastFiveDays(PreviousDay day) {
     DateTime lowerBound = DateTime.now().subtract(const Duration(days: 5));
     DateTime upperBound = DateTime.now();
@@ -120,35 +157,66 @@ class WeatherData {
     }
   }
 
-  ///Returns the previous 5 days of nullable pressures
-  List<double?> getPastFiveDayPressure() {
-    List<double?> pressures = List.empty(growable: true);
+  ///Used to standardize lists
+  int _sortMostRecentFirst(PreviousDay day1, PreviousDay day2) {
+    DateTime date1 = DateTime(DateTime.now().year, day1.month, day1.day);
+    DateTime date2 = DateTime(DateTime.now().year, day2.month, day2.day);
+    if (date1.isAfter(date2)) {
+      return 1;
+    } else if (date1.isBefore(date2)) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
+  ///Returns the previous 5 days of pressures
+  List<double> getPastPressures() {
+    List<double> pressures = List.empty(growable: true);
     Iterable<PreviousDay> days = _pastDays.where((day) => _isPastFiveDays(day));
     for (PreviousDay day in days) {
       pressures.add(day.pressure['mean']);
     }
-    log("Found ${pressures.length} pressures in range", name: "WeatherData");
     return pressures;
   }
 
-  ///Returns the previous 5 days of nullable humidity
-  List<double?> getPastFiveDayHumidity() {
-    List<double?> humidities = List.empty(growable: true);
+  ///Returns the previous 5 days of humidity
+  List<double> getPastHumidities() {
+    List<double> humidities = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
       humidities.add(day.humidity['mean']);
     }
-    log("Found ${humidities.length} humidities in range", name: "WeatherData");
     return humidities;
   }
 
-  ///Returns the previous 5 days of nullable precipitation
-  List<double?> getPastFiveDayPrecipitation() {
-    List<double?> precipitation = List.empty(growable: true);
+  ///Returns the previous 5 days of temperatures
+  List<double> getPastTemperatures() {
+    List<double> temperatures = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
-      precipitation.add(day.humidity['mean']);
+      temperatures.add(day.temp['mean']);
     }
-    log("Found ${precipitation.length} precipitations in range",
-        name: "WeatherData");
+    return temperatures;
+  }
+
+  ///Returns the previous 5 days of precipitation
+  List<double> getPastPrecipitations() {
+    List<double> precipitation = List.empty(growable: true);
+    for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
+      if (day.precipitation['mean'] == null) {
+        precipitation.add(0.0);
+      } else {
+        precipitation.add(day.precipitation['mean']);
+      }
+    }
     return precipitation;
+  }
+
+  ///Returns the previous 5 days of wind speeds
+  List<double> getPastWindSpeeds() {
+    List<double> windSpeeds = List.empty(growable: true);
+    for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
+      windSpeeds.add(day.wind['mean']);
+    }
+    return windSpeeds;
   }
 }
