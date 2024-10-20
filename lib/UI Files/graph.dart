@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackohio12/global_methods.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Graph extends StatefulWidget {
@@ -15,21 +16,21 @@ class _GraphState extends State<Graph> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            color: Colors.yellow,
+            color: Global.tableData(),
             child: Center(
                 child: SfCartesianChart(
-                    borderColor: Colors.purple,
+                    borderColor: Colors.transparent,
                     plotAreaBorderColor: Colors.red,
-                    borderWidth: 5,
-                    plotAreaBorderWidth: 5,
+                    borderWidth: 0,
+                    plotAreaBorderWidth: 0,
                     backgroundColor: Colors.transparent,
-                    plotAreaBackgroundColor: Colors.orange,
+                    plotAreaBackgroundColor: const Color.fromARGB(255, 154, 193, 255),
                     primaryXAxis: CategoryAxis(
                             title: AxisTitle(
                                 text: 'Week Days',
                                 textStyle: TextStyle(
-                                    color: Colors.deepOrange,
-                                    fontFamily: 'Roboto',
+                                    color: Colors.black,
+                                    //fontFamily: 'Roboto',
                                     fontSize: 16,
                                     fontStyle: FontStyle.italic,
                                     fontWeight: FontWeight.w300
@@ -42,8 +43,8 @@ class _GraphState extends State<Graph> {
                             title: AxisTitle(
                                 text: 'Chance of Flare-Up',
                                 textStyle: TextStyle(
-                                    color: Colors.deepOrange,
-                                    fontFamily: 'Roboto',
+                                    color: Colors.black,
+                                    //fontFamily: 'Roboto',
                                     fontSize: 16,
                                     fontStyle: FontStyle.italic,
                                     fontWeight: FontWeight.w300
@@ -54,8 +55,8 @@ class _GraphState extends State<Graph> {
                   // Renders line chart
                   LineSeries<double, int>(
                       dataSource: widget.flareUpChance,
-                      color: Colors.black,
-                      width: 7,
+                      color: Colors.blue,
+                      width: 5,
                       xValueMapper: (double d, int i) {
                         return i;
                       },
