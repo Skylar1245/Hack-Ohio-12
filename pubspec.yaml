@@ -21,8 +21,16 @@ dependencies:
   syncfusion_flutter_charts: ^27.1.53
   shared_preferences: ^2.3.2
   
+   
+  
 dev_dependencies:
   dependency_validator: ^4.1.1
+  flutter_launcher_icons: ^0.14.1
+
+flutter_launcher_icons: 
+  android: "icon.png"
+  ios: true
+  image_path: "assets/icon.png"
 
   flutter_test:
     sdk: flutter
