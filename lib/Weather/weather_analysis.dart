@@ -8,12 +8,6 @@ class WeatherAnalysis {
     List<double> humidities = Global.weatherData.getPastHumidities();
     List<double> windSpeeds = Global.weatherData.getPastWindSpeeds();
     List<double> precipitations = Global.weatherData.getPastPrecipitations();
-    //Today Data
-    pressures.add(Global.weatherData.getTodaysPressure());
-    temperatures.add(Global.weatherData.getTodaysTemperature().kelvin!);
-    humidities.add(Global.weatherData.getTodaysHumidity());
-    windSpeeds.add(Global.weatherData.getTodaysWind());
-    precipitations.add(Global.weatherData.getTodaysPrecipitation());
     // Future Predictions
     pressures.addAll(Global.weatherData.getUpcomingPressures());
     temperatures.addAll(Global.weatherData.getUpcomingTemperatures());

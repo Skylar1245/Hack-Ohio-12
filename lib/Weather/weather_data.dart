@@ -18,9 +18,6 @@ class WeatherData {
   //User Longitude
   double _userLongitude = 0;
 
-  ///Todays weather
-  late Weather weather;
-
   ///Weather forecast of 5 days
   List<Weather> _futureForecast = List.empty(growable: true);
 
@@ -48,10 +45,10 @@ class WeatherData {
     _userLatitude = position.latitude;
     _userLongitude = position.longitude;
     //populate future weather
-    weather = await _weatherFactory.currentWeatherByLocation(
-        _userLatitude, _userLongitude);
     _futureForecast = await _weatherFactory.fiveDayForecastByLocation(
         _userLatitude, _userLongitude);
+
+    log(_futureForecast.first.date.toString(), name: "WeatherData");
     //populate past weather
     String url =
         "https://history.openweathermap.org/data/2.5/aggregated/year?lat=$_userLatitude&lon=$_userLongitude&appid=$_apiKey";
@@ -66,34 +63,6 @@ class WeatherData {
     } else {
       throw Exception("OpenWeather did not reply");
     }
-  }
-
-  ///Returns the current pressure at time of call
-  double getTodaysPressure() {
-    return weather.pressure!;
-  }
-
-  ///Returns the current humidity at time of call
-  double getTodaysHumidity() {
-    return weather.humidity!;
-  }
-
-  ///Returns the current temperature at time of call
-  Temperature getTodaysTemperature() {
-    return weather.temperature!;
-  }
-
-  ///Returns the current precipitation at time of call
-  double getTodaysPrecipitation() {
-    if (weather.rainLast3Hours == null) {
-      return 0.0;
-    }
-    return weather.rainLast3Hours!;
-  }
-
-  ///Returns the current wind speed at time of call
-  double getTodaysWind() {
-    return weather.windSpeed!;
   }
 
   ///Returns the upcoming 5 days of  pressures
@@ -116,11 +85,19 @@ class WeatherData {
 
   ///Returns the upcoming 5 days of temperatures
   List<double> getUpcomingTemperatures() {
-    List<double> humidities = List.empty(growable: true);
-    for (Weather w in _futureForecast) {
-      humidities.add(w.humidity!);
+    List<double> temperatures = List.empty(growable: true);
+
+    // Sort by date, placing today first and future dates in ascending order
+    _futureForecast.sort((a, b) {
+      return a.date!.compareTo(b.date!);
+    });
+
+    for (int i = 0; i < _futureForecast.length; i++) {
+      Weather w = _futureForecast.elementAt(i);
+      temperatures.add(w.temperature?.fahrenheit ?? 0.0);
     }
-    return humidities;
+    
+    return temperatures;
   }
 
   ///Returns the upcoming 5 days of rain
@@ -154,19 +131,6 @@ class WeatherData {
       return true;
     } else {
       return false;
-    }
-  }
-
-  ///Used to standardize lists
-  int _sortMostRecentFirst(PreviousDay day1, PreviousDay day2) {
-    DateTime date1 = DateTime(DateTime.now().year, day1.month, day1.day);
-    DateTime date2 = DateTime(DateTime.now().year, day2.month, day2.day);
-    if (date1.isAfter(date2)) {
-      return 1;
-    } else if (date1.isBefore(date2)) {
-      return -1;
-    } else {
-      return 0;
     }
   }
 

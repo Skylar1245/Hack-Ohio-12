@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: Global.getWidthByPercentage(context, 20),
                         ),
                         Text(
-                            '${Global.weatherData.getTodaysTemperature().fahrenheit?.round()}°F',
+                            '${Global.weatherData.getUpcomingTemperatures().elementAt(0).round()}°F',
                             style: TextStyle(
                                 fontSize: 50, color: Global.textColor())),
                       ],
@@ -151,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   tableDivider,
                                   Text(
-                                    '${Global.weatherData.getTodaysTemperature().fahrenheit?.round()}°',
+                                    '${Global.weatherData.getUpcomingTemperatures().elementAt(0).round()}°',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Global.textColor(),
@@ -171,7 +171,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Column(
                                   children: [
                                     tableDivider,
-                                    Text('1',
+                                    Text(
+                                        '${Global.weatherData.getUpcomingTemperatures().elementAt(1).round()}°',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Global.textColor(),
@@ -189,7 +190,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Column(
                                   children: [
                                     tableDivider,
-                                    Text('2',
+                                    Text(
+                                        '${Global.weatherData.getUpcomingTemperatures().elementAt(2).round()}°',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Global.textColor(),
@@ -207,7 +209,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Column(
                                   children: [
                                     tableDivider,
-                                    Text('3',
+                                    Text(
+                                        '${Global.weatherData.getUpcomingTemperatures().elementAt(3).round()}°',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Global.textColor(),
@@ -225,7 +228,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Column(
                                   children: [
                                     tableDivider,
-                                    Text('4',
+                                    Text(
+                                        '${Global.weatherData.getUpcomingTemperatures().elementAt(4).round()}°',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                           color: Global.textColor(),
