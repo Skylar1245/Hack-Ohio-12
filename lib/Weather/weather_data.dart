@@ -22,11 +22,21 @@ class WeatherData {
   List<Weather> _futureForecast = List.empty(growable: true);
 
   ///Weather forecast from 5 days in the past
+  ///Weather forecast from 5 days in the past
   List<PreviousDay> _pastDays = List.empty(growable: true);
 
   ///OpenWeatherMap API key obtained for free at
   ///https://openweathermap.org/price
   static final String _apiKey = "6bc5a74652a7e36c118775e11f341534";
+
+  ///Constructor
+  WeatherData() : _weatherFactory = WeatherFactory(_apiKey);
+
+  ///Fills all data fields of the [WeatherData]
+  Future<bool> initialize() async {
+    await _populateFields();
+    return true;
+  }
 
   ///Constructor
   WeatherData() : _weatherFactory = WeatherFactory(_apiKey);
@@ -70,6 +80,7 @@ class WeatherData {
     List<double> pressures = List.empty(growable: true);
     for (Weather w in _futureForecast) {
       pressures.add(w.pressure!);
+      pressures.add(w.pressure!);
     }
     return pressures;
   }
@@ -77,7 +88,11 @@ class WeatherData {
   ///Returns the upcoming 5 days of humidities
   List<double> getUpcomingHumidities() {
     List<double> humidities = List.empty(growable: true);
+  ///Returns the upcoming 5 days of humidities
+  List<double> getUpcomingHumidities() {
+    List<double> humidities = List.empty(growable: true);
     for (Weather w in _futureForecast) {
+      humidities.add(w.humidity!);
       humidities.add(w.humidity!);
     }
     return humidities;
@@ -147,6 +162,9 @@ class WeatherData {
   ///Returns the previous 5 days of humidity
   List<double> getPastHumidities() {
     List<double> humidities = List.empty(growable: true);
+  ///Returns the previous 5 days of humidity
+  List<double> getPastHumidities() {
+    List<double> humidities = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
       humidities.add(day.humidity['mean']);
     }
@@ -165,7 +183,25 @@ class WeatherData {
   ///Returns the previous 5 days of precipitation
   List<double> getPastPrecipitations() {
     List<double> precipitation = List.empty(growable: true);
+  ///Returns the previous 5 days of temperatures
+  List<double> getPastTemperatures() {
+    List<double> temperatures = List.empty(growable: true);
     for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
+      temperatures.add(day.temp['mean']);
+    }
+    return temperatures;
+  }
+
+  ///Returns the previous 5 days of precipitation
+  List<double> getPastPrecipitations() {
+    List<double> precipitation = List.empty(growable: true);
+    for (PreviousDay day in _pastDays.where((day) => _isPastFiveDays(day))) {
+      if (day.precipitation['mean'] == null) {
+        precipitation.add(0.0);
+      } else {
+        precipitation.add(day.precipitation['mean']);
+      }
+    }
       if (day.precipitation['mean'] == null) {
         precipitation.add(0.0);
       } else {

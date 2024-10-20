@@ -57,5 +57,6 @@ class WeatherAnalysis {
     }
 
     return migraineChances;
+    return migraineChances;
   }
 }

@@ -44,7 +44,7 @@ class _SkeletonState extends State<DataPage> {
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Text("Chances of Flare Up:",
+                      Text("Today's Chances of Flare Up:",
                           style: TextStyle(
                               color: Global.textColor(), fontSize: 20)),
                       Text("${widget.percent}%",
@@ -53,11 +53,24 @@ class _SkeletonState extends State<DataPage> {
                     ])),
             Global.divider(context),
             Container(
-                decoration: decoration,
-                alignment: Alignment.center,
-                width: Global.getWidthByPercentage(context, 90),
-                height: Global.getHeightByPercentage(context, 60),
-                child: Graph(flareUpChance: WeatherAnalysis.checkMigraineChances())),
+              decoration: decoration,
+              alignment: Alignment.center,
+              width: Global.getWidthByPercentage(context, 90),
+              height: Global.getHeightByPercentage(context, 60),
+              child: Column(
+                children: [
+                  Container(
+                    width: Global.getWidthByPercentage(context, 80),
+                          height: Global.getHeightByPercentage(context, 30),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: Global.textColor())
+                  )
+                  ,child: Graph(flareUpChance: WeatherAnalysis.checkMigraineChances()),
+                  )
+                ],
+              ),
+            ),
             Global.divider(context),
             Container(
                 decoration: decoration,

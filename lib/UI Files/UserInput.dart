@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackohio12/global_methods.dart';
+import 'package:hackohio12/UserPref.dart';
 
 class UserInput extends StatefulWidget {
   const UserInput({super.key, required this.title});
@@ -11,9 +12,13 @@ class UserInput extends StatefulWidget {
 }
 
 class _SkeletonState extends State<UserInput> {
+  UserPref userPref = UserPref();
   @override
   Widget build(BuildContext context) {
-    Divider tempDivider = Divider(height: 5, color: Colors.transparent,);
+    Divider tempDivider = Divider(
+      height: 5,
+      color: Colors.transparent,
+    );
     Decoration decoration = BoxDecoration(
       gradient: Global.gradient(),
       borderRadius: BorderRadius.circular(20), // Adjust the radius as needed
@@ -83,25 +88,46 @@ class _SkeletonState extends State<UserInput> {
                                     value: true,
                                     onChanged: null,
                                     controlAffinity:
-                                        ListTileControlAffinity.leading),CheckboxListTile(
-                        checkColor: Global.tableData(),
-                        title: Text(
-                          "Arthritis",
-                          style: TextStyle(
-                              color: Global.textColor(), fontSize: 12),
-                        ),
-                        value: true,
-                        onChanged: null,
-                        controlAffinity: ListTileControlAffinity.leading),
+                                        ListTileControlAffinity.leading),
+                                CheckboxListTile(
+                                    checkColor: Global.tableData(),
+                                    title: Text(
+                                      "Arthritis",
+                                      style: TextStyle(
+                                          color: Global.textColor(),
+                                          fontSize: 12),
+                                    ),
+                                    value: true,
+                                    onChanged: null,
+                                    controlAffinity:
+                                        ListTileControlAffinity.leading),
                               ],
                             ))),
                   ],
                 )),
             Global.divider(context),
             Container(
-                decoration: decoration,
-                width: Global.getWidthByPercentage(context, 90),
-                height: Global.getHeightByPercentage(context, 38))
+              decoration: decoration,
+              width: Global.getWidthByPercentage(context, 90),
+              height: Global.getHeightByPercentage(context, 38),
+              child: Column(
+                children: [
+                  Text(
+                    "\nYour conditions for the past month",
+                    style: TextStyle(color: Global.textColor(), fontSize: 16),
+                  ),
+                  Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                          width: Global.getWidthByPercentage(context, 80),
+                          height: Global.getHeightByPercentage(context, 30),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: Global.textColor()),
+                          )))
+                ],
+              ),
+            )
           ],
         ),
       ),
