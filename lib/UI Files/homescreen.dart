@@ -151,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   tableDivider,
                                   Text(
-                                    '0',
+                                    '${Global.weatherData.getTodaysTemperature()?.fahrenheit?.round()}°',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Global.textColor(),
