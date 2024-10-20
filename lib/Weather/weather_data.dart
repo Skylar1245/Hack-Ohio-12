@@ -67,6 +67,9 @@ class WeatherData {
     }
   }
 
+  ///Constructor
+  WeatherData() : _weatherFactory = WeatherFactory(_apiKey);
+
   ///Returns the current pressure at time of call
   double getTodaysPressure() {
     return weather.pressure!;
