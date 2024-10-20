@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:hackohio12/Weather/Day.dart';
+import 'package:hackohio12/Weather/weather_analysis.dart';
 import 'package:hackohio12/permissions.dart';
 import 'package:weather/weather.dart';
 import 'package:geolocator/geolocator.dart';
@@ -90,6 +91,7 @@ class WeatherData {
     } else {
       throw Exception("OpenWeather did not reply");
     }
+    WeatherAnalysis.initialize();
   }
 
   String getLocation() {
